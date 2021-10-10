@@ -14,6 +14,9 @@ namespace QuanLyNhanSu.Models
         public virtual DbSet<Role> Roles { get; set; }
      
         public virtual DbSet<PhongBan> PhongBans { get; set; }
+        public virtual DbSet<NhanVien> NhanViens { get; set; }
+        public virtual DbSet<ChucVu> ChucVus { get; set; }
+        public virtual DbSet<Account> Accounts { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

@@ -10,10 +10,12 @@ namespace QuanLyNhanSu.Models
     {
         [Key]
         [Display(Name = "Mã Phòng Ban")]
+        [Required(ErrorMessage ="Mã Phòng Ban không được để trống !!!")]
         public string MaPhongBan { get; set; }
 
 
         [Display(Name = "Tên Phòng Ban")]
+        [Required(ErrorMessage = "Tên Phòng Ban không được để trống !!!")]
         public string TenPhongBan { get; set; }
 
 
@@ -23,6 +25,6 @@ namespace QuanLyNhanSu.Models
 
         [Display(Name = "Số điện thoại Phòng Ban")]
         public int SdtPhongBan { get; set; }
-        //public ICollection<NhanVien> NhanViens { get; set; }
+        public ICollection<NhanVien> NhanViens { get; set; }
     }
 }
