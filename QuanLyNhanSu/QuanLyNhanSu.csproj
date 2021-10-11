@@ -130,8 +130,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admins\AdminsAreaRegistration.cs" />
     <Compile Include="Areas\Admins\Controllers\HomeAdminController.cs" />
-    <Compile Include="Areas\NhanVien\Controllers\NhanViensController.cs" />
-    <Compile Include="Areas\NhanVien\NhanVienAreaRegistration.cs" />
+    <Compile Include="Areas\Admins\Controllers\NhanViensAdminController.cs" />
+    <Compile Include="Areas\NVClient\Controllers\HomeNVController.cs" />
+    <Compile Include="Areas\NVClient\Controllers\NhanViensClientController.cs" />
+    <Compile Include="Areas\NVClient\NVClientAreaRegistration.cs" />
     <Compile Include="Controllers\AccountsController.cs" />
     <Compile Include="Controllers\ChucVusController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -161,6 +163,10 @@
     <Compile Include="Migrations\202110100614272_2.Designer.cs">
       <DependentUpon>202110100614272_2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202110110726569_Image.cs" />
+    <Compile Include="Migrations\202110110726569_Image.Designer.cs">
+      <DependentUpon>202110110726569_Image.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\AutoGenerateKey.cs" />
@@ -179,6 +185,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\CustomCss.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -186,9 +193,18 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\Admins\Views\web.config" />
-    <Content Include="Areas\NhanVien\Views\web.config" />
+    <Content Include="Areas\Admins\Views\Shared\_LayoutADM.cshtml" />
     <Content Include="Areas\Admins\Views\HomeAdmin\Index.cshtml" />
-    <Content Include="Areas\NhanVien\Views\NhanViens\Index.cshtml" />
+    <Content Include="Areas\Admins\Views\NhanViensAdmin\Create.cshtml" />
+    <Content Include="Areas\Admins\Views\NhanViensAdmin\Delete.cshtml" />
+    <Content Include="Areas\Admins\Views\NhanViensAdmin\Details.cshtml" />
+    <Content Include="Areas\Admins\Views\NhanViensAdmin\Edit.cshtml" />
+    <Content Include="Areas\Admins\Views\NhanViensAdmin\Index.cshtml" />
+    <Content Include="Areas\NVClient\Views\web.config" />
+    <Content Include="Areas\NVClient\Views\Shared\_LayoutNVClient.cshtml" />
+    <Content Include="Areas\NVClient\Views\HomeNV\Index.cshtml" />
+    <Content Include="Areas\NVClient\Views\NhanViensClient\Details.cshtml" />
+    <Content Include="Areas\NVClient\Views\NhanViensClient\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -211,8 +227,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\ChucVus\Create.cshtml" />
     <Content Include="Views\ChucVus\Delete.cshtml" />
@@ -229,10 +243,6 @@
     <Content Include="Views\Roles\Details.cshtml" />
     <Content Include="Views\Roles\Edit.cshtml" />
     <Content Include="Views\Roles\Index.cshtml" />
-    <Content Include="Views\NhanViens\Create.cshtml" />
-    <Content Include="Views\NhanViens\Delete.cshtml" />
-    <Content Include="Views\NhanViens\Details.cshtml" />
-    <Content Include="Views\NhanViens\Edit.cshtml" />
     <Content Include="Views\NhanViens\Index.cshtml" />
     <Content Include="Views\Accounts\Login.cshtml" />
     <Content Include="Views\Accounts\Register.cshtml" />
@@ -240,10 +250,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admins\Data\" />
-    <Folder Include="Areas\Admins\Views\Shared\" />
-    <Folder Include="Areas\NhanVien\Data\" />
-    <Folder Include="Areas\NhanVien\Views\NhanVien\" />
-    <Folder Include="Areas\NhanVien\Views\Shared\" />
+    <Folder Include="Areas\NVClient\Data\" />
+    <Folder Include="Images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -273,6 +281,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202110100614272_2.resx">
       <DependentUpon>202110100614272_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110110726569_Image.resx">
+      <DependentUpon>202110110726569_Image.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

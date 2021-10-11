@@ -8,23 +8,21 @@ using System.Web;
 using System.Web.Mvc;
 using QuanLyNhanSu.Models;
 
-namespace QuanLyNhanSu.Controllers
+namespace QuanLyNhanSu.Areas.NVClient.Controllers
 {
-    [Authorize]
-    public class NhanViensController : Controller
+    [Authorize(Roles ="client")]
+    public class NhanViensClientController : Controller
     {
         private QuanLyNhanSuDbContext db = new QuanLyNhanSuDbContext();
-        AutoGenerateKey aukey = new AutoGenerateKey();
 
-        // GET: NhanViens
-        
+        // GET: NVClient/NhanViensClient
         public ActionResult Index()
         {
             var nhanViens = db.NhanViens.Include(n => n.ChucVus).Include(n => n.PhongBans);
             return View(nhanViens.ToList());
         }
 
-        // GET: NhanViens/Details/5
+        // GET: NVClient/NhanViensClient/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
@@ -39,18 +37,15 @@ namespace QuanLyNhanSu.Controllers
             return View(nhanVien);
         }
 
-        // GET: NhanViens/Create
+        // GET: NVClient/NhanViensClient/Create
         public ActionResult Create()
         {
-            var NVID = db.NhanViens.OrderByDescending(m => m.IDNhanVien).FirstOrDefault().IDNhanVien;
-            var newID = aukey.GenerateKey(NVID);
-            ViewBag.NewNVID = newID;
             ViewBag.MaChucVu = new SelectList(db.ChucVus, "MaChucVu", "TenChucVu");
             ViewBag.MaPhongBan = new SelectList(db.PhongBans, "MaPhongBan", "TenPhongBan");
             return View();
         }
 
-        // POST: NhanViens/Create
+        // POST: NVClient/NhanViensClient/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -69,7 +64,7 @@ namespace QuanLyNhanSu.Controllers
             return View(nhanVien);
         }
 
-        // GET: NhanViens/Edit/5
+        // GET: NVClient/NhanViensClient/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
@@ -86,7 +81,7 @@ namespace QuanLyNhanSu.Controllers
             return View(nhanVien);
         }
 
-        // POST: NhanViens/Edit/5
+        // POST: NVClient/NhanViensClient/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -104,7 +99,7 @@ namespace QuanLyNhanSu.Controllers
             return View(nhanVien);
         }
 
-        // GET: NhanViens/Delete/5
+        // GET: NVClient/NhanViensClient/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
@@ -119,7 +114,7 @@ namespace QuanLyNhanSu.Controllers
             return View(nhanVien);
         }
 
-        // POST: NhanViens/Delete/5
+        // POST: NVClient/NhanViensClient/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)

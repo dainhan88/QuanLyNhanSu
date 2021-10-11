@@ -2,17 +2,14 @@
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Areas/NVClient/Views/Shared/_LayoutNVClient.cshtml";
 }
 
-<h2>Quản Lý Nhân Viên</h2>
+<h2>Index</h2>
 
 
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.IDNhanVien)
-        </th>
         <th>
             @Html.DisplayNameFor(model => model.ChucVus.TenChucVu)
         </th>
@@ -43,9 +40,6 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.IDNhanVien)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.ChucVus.TenChucVu)
         </td>
         <td>
@@ -70,8 +64,9 @@
             @Html.DisplayFor(modelItem => item.CCCDNhanVien)
         </td>
         <td>
+          
+            @Html.ActionLink("Details", "Details", new { id=item.IDNhanVien })
             
-            @Html.ActionLink("Details", "Details", new { id=item.IDNhanVien }) 
         </td>
     </tr>
 }

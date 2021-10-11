@@ -41,6 +41,9 @@ namespace QuanLyNhanSu.Models
         [Display(Name = "Số căn cước công dân Nhân Viên")]
         public String CCCDNhanVien { get; set; }
 
+        public string NhanVienImgName { get; set; }
+        [NotMapped]
+        public HttpPostedFileBase NhanVienImgFile { get; set; }
 
         [Display(Name = "Mã chức vụ")]
         public string MaChucVu { get; set; }

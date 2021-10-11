@@ -4,11 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace QuanLyNhanSu.Areas.NhanVien.Controllers
+namespace QuanLyNhanSu.Areas.NVClient.Controllers
 {
-    public class NhanViensController : Controller
+    [Authorize(Roles = "client")]
+    public class HomeNVController : Controller
     {
-        // GET: NhanVien/NhanVien
+        // GET: NVClient/HomeNV
         public ActionResult Index()
         {
             return View();

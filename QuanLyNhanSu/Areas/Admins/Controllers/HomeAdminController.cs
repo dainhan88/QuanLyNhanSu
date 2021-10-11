@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace QuanLyNhanSu.Areas.Admins.Controllers
 {
+    [Authorize(Roles = "ADMIN")]
     public class HomeAdminController : Controller
     {
         // GET: Admins/HomeAdmin

@@ -2,29 +2,28 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using QuanLyNhanSu.Models;
 
-namespace QuanLyNhanSu.Controllers
+namespace QuanLyNhanSu.Areas.Admins.Controllers
 {
-    [Authorize]
-    public class NhanViensController : Controller
+    
+    public class NhanViensAdminController : Controller
     {
         private QuanLyNhanSuDbContext db = new QuanLyNhanSuDbContext();
-        AutoGenerateKey aukey = new AutoGenerateKey();
 
-        // GET: NhanViens
-        
+        // GET: Admins/NhanViensAdmin
         public ActionResult Index()
         {
             var nhanViens = db.NhanViens.Include(n => n.ChucVus).Include(n => n.PhongBans);
             return View(nhanViens.ToList());
         }
 
-        // GET: NhanViens/Details/5
+        // GET: Admins/NhanViensAdmin/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
@@ -39,26 +38,29 @@ namespace QuanLyNhanSu.Controllers
             return View(nhanVien);
         }
 
-        // GET: NhanViens/Create
+        // GET: Admins/NhanViensAdmin/Create
         public ActionResult Create()
         {
-            var NVID = db.NhanViens.OrderByDescending(m => m.IDNhanVien).FirstOrDefault().IDNhanVien;
-            var newID = aukey.GenerateKey(NVID);
-            ViewBag.NewNVID = newID;
             ViewBag.MaChucVu = new SelectList(db.ChucVus, "MaChucVu", "TenChucVu");
             ViewBag.MaPhongBan = new SelectList(db.PhongBans, "MaPhongBan", "TenPhongBan");
             return View();
         }
 
-        // POST: NhanViens/Create
+        // POST: Admins/NhanViensAdmin/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IDNhanVien,NameNhanVien,NgaySinhNV,SDTNhanVienName,GioiTinhNhanVien,DiaChiNhanVien,CCCDNhanVien,MaChucVu,MaPhongBan")] NhanVien nhanVien)
+        public ActionResult Create(/*[Bind(Include = "IDNhanVien,NameNhanVien,NgaySinhNV,SDTNhanVienName,GioiTinhNhanVien,DiaChiNhanVien,CCCDNhanVien,MaChucVu,MaPhongBan")]*/ NhanVien nhanVien)
         {
             if (ModelState.IsValid)
             {
+                string fileName = Path.GetFileNameWithoutExtension(nhanVien.NhanVienImgFile.FileName);
+                string extension = Path.GetExtension(nhanVien.NhanVienImgFile.FileName);
+                fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                nhanVien.NhanVienImgName = "/Images/" + fileName;
+                fileName = Path.Combine(Server.MapPath("~/Images/"), fileName);
+                nhanVien.NhanVienImgFile.SaveAs(fileName);
                 db.NhanViens.Add(nhanVien);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -69,7 +71,7 @@ namespace QuanLyNhanSu.Controllers
             return View(nhanVien);
         }
 
-        // GET: NhanViens/Edit/5
+        // GET: Admins/NhanViensAdmin/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
@@ -86,7 +88,7 @@ namespace QuanLyNhanSu.Controllers
             return View(nhanVien);
         }
 
-        // POST: NhanViens/Edit/5
+        // POST: Admins/NhanViensAdmin/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -104,7 +106,7 @@ namespace QuanLyNhanSu.Controllers
             return View(nhanVien);
         }
 
-        // GET: NhanViens/Delete/5
+        // GET: Admins/NhanViensAdmin/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
@@ -119,7 +121,7 @@ namespace QuanLyNhanSu.Controllers
             return View(nhanVien);
         }
 
-        // POST: NhanViens/Delete/5
+        // POST: Admins/NhanViensAdmin/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)

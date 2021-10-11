@@ -1,0 +1,23 @@
+﻿body {
+} 
+.nav-list-item {
+    display:flex !important;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.nav-list-item ul{
+    list-style:none;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: white;
+    font-weight: 700;
+    font-size: 17px;
+}
+
+.img-link {
+    width: 100%;
+    
+}
