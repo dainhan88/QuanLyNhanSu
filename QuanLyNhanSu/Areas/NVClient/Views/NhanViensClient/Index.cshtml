@@ -5,11 +5,14 @@
     Layout = "~/Areas/NVClient/Views/Shared/_LayoutNVClient.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Danh Sách Nhân Viên</h2>
 
 
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NameNhanVien)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.ChucVus.TenChucVu)
         </th>
@@ -17,58 +20,38 @@
             @Html.DisplayNameFor(model => model.PhongBans.TenPhongBan)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.NameNhanVien)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NgaySinhNV)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SDTNhanVienName)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.GioiTinhNhanVien)
         </th>
+
         <th>
-            @Html.DisplayNameFor(model => model.DiaChiNhanVien)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CCCDNhanVien)
+            <label>Ảnh Chân Dung</label>
         </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ChucVus.TenChucVu)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PhongBans.TenPhongBan)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NameNhanVien)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NgaySinhNV)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SDTNhanVienName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.GioiTinhNhanVien)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DiaChiNhanVien)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CCCDNhanVien)
-        </td>
-        <td>
-          
-            @Html.ActionLink("Details", "Details", new { id=item.IDNhanVien })
-            
-        </td>
-    </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.ChucVus.TenChucVu)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.PhongBans.TenPhongBan)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NameNhanVien)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.GioiTinhNhanVien)
+    </td>
+    <td>
+        <img src="@item.NhanVienImgName" width="150" />
+    </td>
+    <td>
+
+        @Html.ActionLink("Thông Tin Chi Tiết", "Details", new { id = item.IDNhanVien })
+
+    </td>
+</tr>
 }
 
 </table>

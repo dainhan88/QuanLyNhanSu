@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -50,10 +51,16 @@ namespace QuanLyNhanSu.Areas.NVClient.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IDNhanVien,NameNhanVien,NgaySinhNV,SDTNhanVienName,GioiTinhNhanVien,DiaChiNhanVien,CCCDNhanVien,MaChucVu,MaPhongBan")] NhanVien nhanVien)
+        public ActionResult Create(/*[Bind(Include = "IDNhanVien,NameNhanVien,NgaySinhNV,SDTNhanVienName,GioiTinhNhanVien,DiaChiNhanVien,CCCDNhanVien,MaChucVu,MaPhongBan")]*/ NhanVien nhanVien)
         {
             if (ModelState.IsValid)
             {
+                string fileName = Path.GetFileNameWithoutExtension(nhanVien.NhanVienImgFile.FileName);
+                string extension = Path.GetExtension(nhanVien.NhanVienImgFile.FileName);
+                fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                nhanVien.NhanVienImgName = "/Images/" + fileName;
+                fileName = Path.Combine(Server.MapPath("~/Images/"), fileName);
+                nhanVien.NhanVienImgFile.SaveAs(fileName);
                 db.NhanViens.Add(nhanVien);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -63,7 +70,6 @@ namespace QuanLyNhanSu.Areas.NVClient.Controllers
             ViewBag.MaPhongBan = new SelectList(db.PhongBans, "MaPhongBan", "TenPhongBan", nhanVien.MaPhongBan);
             return View(nhanVien);
         }
-
         // GET: NVClient/NhanViensClient/Edit/5
         public ActionResult Edit(string id)
         {

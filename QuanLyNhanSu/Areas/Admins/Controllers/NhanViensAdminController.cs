@@ -15,6 +15,7 @@ namespace QuanLyNhanSu.Areas.Admins.Controllers
     public class NhanViensAdminController : Controller
     {
         private QuanLyNhanSuDbContext db = new QuanLyNhanSuDbContext();
+        AutoGenerateKey aukey = new AutoGenerateKey();
 
         // GET: Admins/NhanViensAdmin
         public ActionResult Index()
@@ -41,6 +42,9 @@ namespace QuanLyNhanSu.Areas.Admins.Controllers
         // GET: Admins/NhanViensAdmin/Create
         public ActionResult Create()
         {
+            var NVID = db.NhanViens.OrderByDescending(m => m.IDNhanVien).FirstOrDefault().IDNhanVien;
+            var newID = aukey.GenerateKey(NVID);
+            ViewBag.NewNVID = newID;
             ViewBag.MaChucVu = new SelectList(db.ChucVus, "MaChucVu", "TenChucVu");
             ViewBag.MaPhongBan = new SelectList(db.PhongBans, "MaPhongBan", "TenPhongBan");
             return View();
