@@ -10,12 +10,12 @@ namespace QuanLyNhanSu.Models
     public class NhanVien
     {
         [Key]
-        [Display(Name = "Mã Số Nhân Viên")]
+        [Display(Name = "Mã Số")]
         public String IDNhanVien { get; set; }
 
 
         [Required(ErrorMessage = "Họ Và Tên Nhân Viên không được để trống !!!")]
-        [Display(Name = "Họ Và Tên Nhân Viên")]
+        [Display(Name = "Họ Và Tên")]
         public String NameNhanVien { get; set; }
 
 
@@ -26,20 +26,22 @@ namespace QuanLyNhanSu.Models
         public DateTime NgaySinhNV { get; set; }
 
 
-        [Display(Name = "Số Điện Thoại Nhân Viên")]
+        [Display(Name = "Số Điện Thoại")]
         public String SDTNhanVienName { get; set; }
 
 
-        [Display(Name = "GIới Tính Nhân Viên")]
+        [Display(Name = "GIới Tính")]
         public String GioiTinhNhanVien { get; set; }
 
 
-        [Display(Name = "Địa Chỉ Nhân Viên")]
+        [Display(Name = "Địa Chỉ")]
         public String DiaChiNhanVien { get; set; }
 
 
-        [Display(Name = "Số căn cước công dân Nhân Viên")]
+        [Display(Name = "Số căn cước")]
         public String CCCDNhanVien { get; set; }
+
+        [Display(Name = "Ảnh")]
 
         public string NhanVienImgName { get; set; }
         [NotMapped]
@@ -54,5 +56,9 @@ namespace QuanLyNhanSu.Models
         public string MaPhongBan { get; set; }
         [ForeignKey("MaPhongBan")]
         public virtual PhongBan PhongBans { get; set; }
+        public NhanVien()
+            {
+            NhanVienImgName = "~/Images/Avt.png";
+            }
     }
 }

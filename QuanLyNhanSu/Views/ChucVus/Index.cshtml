@@ -2,33 +2,40 @@
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Areas/Admins/Views/Shared/_LayoutADM.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Danh Sách Chức Vụ</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Thêm Mới", "Create")
+    <link href="~/Content/CustomCss.css" rel="stylesheet" />
 </p>
 <table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.TenChucVu)
+        </th>       
+        <th>
+            @Html.DisplayNameFor(model => model.MaChucVu)
         </th>
-        <th></th>
+        <th>Hỗ Trợ</th>
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.TenChucVu)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.MaChucVu }) |
-            @Html.ActionLink("Details", "Details", new { id=item.MaChucVu }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.MaChucVu })
-        </td>
-    </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.TenChucVu)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.MaChucVu)
+    </td>
+    <td>
+        @Html.ActionLink("Sửa", "Edit", new { id = item.MaChucVu }) |
+        @Html.ActionLink("Chi Tiết", "Details", new { id = item.MaChucVu }) |
+        @Html.ActionLink("Xóa", "Delete", new { id = item.MaChucVu })
+    </td>
+</tr>
 }
 
 </table>

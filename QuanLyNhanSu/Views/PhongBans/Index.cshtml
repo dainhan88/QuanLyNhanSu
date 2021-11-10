@@ -2,13 +2,13 @@
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Areas/Admins/Views/Shared/_LayoutADM.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Danh Sách Phòng Ban</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Thêm Mới", "Create")
 </p>
 <table class="table">
     <tr>
@@ -36,9 +36,9 @@
             @Html.DisplayFor(modelItem => item.SdtPhongBan)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.MaPhongBan }) |
-            @Html.ActionLink("Details", "Details", new { id=item.MaPhongBan }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.MaPhongBan })
+            @Html.ActionLink("Chỉnh Sửa", "Edit", new { id=item.MaPhongBan }) |
+            @Html.ActionLink("Chi Tiết", "Details", new { id=item.MaPhongBan }) |
+            @Html.ActionLink("Xóa", "Delete", new { id=item.MaPhongBan })
         </td>
     </tr>
 }

@@ -21,7 +21,7 @@
         <th>
             @Html.DisplayNameFor(model => model.PhongBans.TenPhongBan)
         </th>
-        
+
 
         <th>
             @Html.DisplayNameFor(model => model.GioiTinhNhanVien)
@@ -31,32 +31,33 @@
         </th>
     </tr>
 
-@foreach (var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.NameNhanVien)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.ChucVus.TenChucVu)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.PhongBans.TenPhongBan)
-    </td>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameNhanVien)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChucVus.TenChucVu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhongBans.TenPhongBan)
+            </td>
 
 
-    <td>
-        @Html.DisplayFor(modelItem => item.GioiTinhNhanVien)
-    </td>
-    <td>
-        <img src="@item.NhanVienImgName" width="150" />
-    </td>
-    <td>
-        @Html.ActionLink("Chỉnh Sửa", "Edit", new { id = item.IDNhanVien }) |
-        @Html.ActionLink("Chi Tiết", "Details", new { id = item.IDNhanVien }) |
-        @Html.ActionLink("Xóa Bỏ", "Delete", new { id = item.IDNhanVien })
-    </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GioiTinhNhanVien)
+            </td>
+            <td>
+                <img src="@item.NhanVienImgName" width="150" />
+            </td>
+            <td>
+                @Html.ActionLink("Chỉnh Sửa", "Edit", new { id = item.IDNhanVien }) |
+                @Html.ActionLink("Chi Tiết", "Details", new { id = item.IDNhanVien }) |
+                @Html.ActionLink("Xóa Bỏ", "Delete", new { id = item.IDNhanVien })
+            </td>
 
-</tr>
-}
+        </tr>
+    }
 
 </table>

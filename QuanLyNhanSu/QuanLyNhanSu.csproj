@@ -190,21 +190,22 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\Avt.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\Admins\Views\web.config" />
     <Content Include="Areas\Admins\Views\Shared\_LayoutADM.cshtml" />
     <Content Include="Areas\Admins\Views\HomeAdmin\Index.cshtml" />
-    <Content Include="Areas\Admins\Views\NhanViensAdmin\Create.cshtml" />
-    <Content Include="Areas\Admins\Views\NhanViensAdmin\Delete.cshtml" />
-    <Content Include="Areas\Admins\Views\NhanViensAdmin\Details.cshtml" />
-    <Content Include="Areas\Admins\Views\NhanViensAdmin\Edit.cshtml" />
     <Content Include="Areas\Admins\Views\NhanViensAdmin\Index.cshtml" />
     <Content Include="Areas\NVClient\Views\web.config" />
     <Content Include="Areas\NVClient\Views\Shared\_LayoutNVClient.cshtml" />
     <Content Include="Areas\NVClient\Views\HomeNV\Index.cshtml" />
     <Content Include="Areas\NVClient\Views\NhanViensClient\Details.cshtml" />
     <Content Include="Areas\NVClient\Views\NhanViensClient\Index.cshtml" />
+    <Content Include="Areas\Admins\Views\NhanViensAdmin\Create.cshtml" />
+    <Content Include="Areas\Admins\Views\NhanViensAdmin\Delete.cshtml" />
+    <Content Include="Areas\Admins\Views\NhanViensAdmin\Details.cshtml" />
+    <Content Include="Areas\Admins\Views\NhanViensAdmin\Edit.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -251,7 +252,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admins\Data\" />
     <Folder Include="Areas\NVClient\Data\" />
-    <Folder Include="Images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

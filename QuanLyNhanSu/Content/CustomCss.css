@@ -1,23 +1,36 @@
 ﻿body {
 } 
 .nav-list-item {
-    display:flex !important;
+    display:flex;
     justify-content:space-between;
     align-items:center;
 }
 
-.nav-list-item ul{
-    list-style:none;
+.nav-list-item ul {
+    list-style: none;
 }
 
 .nav-link {
+ 
     text-decoration: none;
-    color: white;
+    color: blue;
     font-weight: 700;
-    font-size: 17px;
+    font-size: 20px;
 }
 
 .img-link {
     width: 100%;
+    height: 800px;
     
+}
+.tieu-de{
+    background-color:white;
+}
+h2{
+    color : red;
+    font-size:22px;
+}
+h3{
+    color : orangered;
+    font-size: 30px;
 }

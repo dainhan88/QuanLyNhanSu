@@ -9,7 +9,7 @@
     <link href="~/Content/CustomCss.css" rel="stylesheet" />
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="tieu-de">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -21,11 +21,20 @@
             <div class="collapse nav-list-item">
                 <ul class="nav navbar-nav">
                     <li>
-                    <a href="/Admins/NhanViensAdmin/Index" class="nav-link">Quản Lý Danh Sách Nhân Viên</a>
+                        <a href="/Admins/HomeAdmin" class="nav-link">Trang Chủ</a>
                     </li>
-                    
                     <li>
-                        <a href="/Roles/Index" class="nav-link">Roles</a>
+                        <a href="/Admins/NhanViensAdmin/Index" class="nav-link">Danh Sách Nhân Viên</a>
+                    </li>
+                    <li>
+                        <a href="/PhongBans/Index" class="nav-link">Phòng Ban</a>
+                    </li>
+                    <li>
+                        <a href="/ChucVus/Index" class="nav-link">Chức Vụ</a>
+                    </li>
+
+                    <li>
+                        <a href="/Roles/Index" class="nav-link">Phân Quyền</a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav">
@@ -44,7 +53,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p style="color:mediumvioletred; font-size:17px;">&copy;- Công Ty TNHH Nhân Lâm -</p>
         </footer>
     </div>
 
