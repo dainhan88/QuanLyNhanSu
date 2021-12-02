@@ -1,0 +1,84 @@
+﻿@model IEnumerable<QuanLyNhanSu.Models.Luong>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/NVClient/Views/Shared/_LayoutNVClient.cshtml";
+}
+
+<h2>Lương Nhân Viên</h2>
+
+<div class="KeySearch">
+    @using (Html.BeginForm())
+    {
+        <p>
+            Tìm kiếm: @Html.TextBox("SearchString") <input style="color:blue" type="submit" value="Tìm kiếm" class="mt-3 text-white" />
+        </p>
+    }
+</div>
+<table class="table">
+    <tr>
+        <th>Mã Nhân Viên</th>
+        <th>
+            @Html.DisplayNameFor(model => model.NhanViens.NameNhanVien)
+        </th>
+        <th>
+            Ngày Sinh
+        </th>
+        <th>
+            Số Điện Thoại
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Thang)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LuongNgay)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NgayCong)
+        </th>
+        <th>
+            Tổng Lương
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        double total = Convert.ToDouble(item.NgayCong * item.LuongNgay);
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.NhanViens.IDNhanVien)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.NhanViens.NameNhanVien)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NhanViens.NgaySinhNV)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NhanViens.SDTNhanVienName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Thang)
+            </td>
+            <td>
+
+                @string.Format("{0:#,##0}", item.LuongNgay)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayCong)
+            </td>
+            <td>
+                @string.Format("{0:#,##0}", @total)
+            </td>
+            <td>
+                @Html.ActionLink("Chỉnh Sửa", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Chi Tiết", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Xóa", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
+
+</table>

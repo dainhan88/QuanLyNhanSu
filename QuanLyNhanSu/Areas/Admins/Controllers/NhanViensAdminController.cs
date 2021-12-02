@@ -18,10 +18,23 @@ namespace QuanLyNhanSu.Areas.Admins.Controllers
         AutoGenerateKey aukey = new AutoGenerateKey();
 
         // GET: Admins/NhanViensAdmin
-        public ActionResult Index()
+        //public ActionResult Index()
+        //{
+        //    var nhanViens = db.NhanViens.Include(n => n.ChucVus).Include(n => n.PhongBans);
+        //    return View(nhanViens.ToList());
+        //}
+        public ActionResult Index(string searchString)
         {
+            var links = from l in db.NhanViens // lấy toàn bộ liên kết
+                        select l;
+            if (!String.IsNullOrEmpty(searchString)) // kiểm tra chuỗi tìm kiếm có rỗng/null hay không
+            {
+                links = links.Where(s => s.NameNhanVien.Contains(searchString)); //lọc theo chuỗi tìm kiếm
+            }
+
+            //return View(links);
             var nhanViens = db.NhanViens.Include(n => n.ChucVus).Include(n => n.PhongBans);
-            return View(nhanViens.ToList());
+            return View(links);
         }
 
         // GET: Admins/NhanViensAdmin/Details/5
@@ -42,8 +55,9 @@ namespace QuanLyNhanSu.Areas.Admins.Controllers
         // GET: Admins/NhanViensAdmin/Create
         public ActionResult Create()
         {
+
             var NVID = db.NhanViens.OrderByDescending(m => m.IDNhanVien).FirstOrDefault().IDNhanVien;
-            var newID = aukey.GenerateKey(NVID);
+            var newID = aukey.GenerateKey("NV", NVID);
             ViewBag.NewNVID = newID;
             ViewBag.MaChucVu = new SelectList(db.ChucVus, "MaChucVu", "TenChucVu");
             ViewBag.MaPhongBan = new SelectList(db.PhongBans, "MaPhongBan", "TenPhongBan");

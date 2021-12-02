@@ -5,7 +5,7 @@
     Layout = "~/Areas/Admins/Views/Shared/_LayoutADM.cshtml";
 }
 
-<h2>Danh Sách Phòng Ban</h2>
+<h2 style="text-align:center">Danh Sách Phòng Ban</h2>
 
 <p>
     @Html.ActionLink("Thêm Mới", "Create")
@@ -20,6 +20,9 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.SdtPhongBan)
+        </th>
+        <th>
+            Hỗ Trợ
         </th>
         <th></th>
     </tr>

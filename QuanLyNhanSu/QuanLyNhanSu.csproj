@@ -51,12 +51,20 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="EPPlus, Version=5.8.3.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.5.8.3\lib\net45\EPPlus.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.IO.RecyclableMemoryStream, Version=1.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IO.RecyclableMemoryStream.1.4.1\lib\net46\Microsoft.IO.RecyclableMemoryStream.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Threading.Tasks" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -130,49 +138,38 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admins\AdminsAreaRegistration.cs" />
     <Compile Include="Areas\Admins\Controllers\HomeAdminController.cs" />
+    <Compile Include="Areas\Admins\Controllers\LuongsController.cs" />
     <Compile Include="Areas\Admins\Controllers\NhanViensAdminController.cs" />
     <Compile Include="Areas\NVClient\Controllers\HomeNVController.cs" />
+    <Compile Include="Areas\NVClient\Controllers\LuongsNVController.cs" />
     <Compile Include="Areas\NVClient\Controllers\NhanViensClientController.cs" />
     <Compile Include="Areas\NVClient\NVClientAreaRegistration.cs" />
     <Compile Include="Controllers\AccountsController.cs" />
     <Compile Include="Controllers\ChucVusController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\NhanViensController.cs" />
+    <Compile Include="Controllers\LuongsController.cs" />
+    <Compile Include="Controllers\NVQuanLiesController.cs" />
     <Compile Include="Controllers\PhongBansController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202110100529034_creat_table_PB.Role.cs" />
-    <Compile Include="Migrations\202110100529034_creat_table_PB.Role.Designer.cs">
-      <DependentUpon>202110100529034_creat_table_PB.Role.cs</DependentUpon>
+    <Compile Include="Migrations\202111300445239_NVQL.cs" />
+    <Compile Include="Migrations\202111300445239_NVQL.Designer.cs">
+      <DependentUpon>202111300445239_NVQL.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202110100533596_create_table_NV.cs" />
-    <Compile Include="Migrations\202110100533596_create_table_NV.Designer.cs">
-      <DependentUpon>202110100533596_create_table_NV.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202110100538328_create_table_ACCount.cs" />
-    <Compile Include="Migrations\202110100538328_create_table_ACCount.Designer.cs">
-      <DependentUpon>202110100538328_create_table_ACCount.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202110100601486_1.cs" />
-    <Compile Include="Migrations\202110100601486_1.Designer.cs">
-      <DependentUpon>202110100601486_1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202110100614272_2.cs" />
-    <Compile Include="Migrations\202110100614272_2.Designer.cs">
-      <DependentUpon>202110100614272_2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202110110726569_Image.cs" />
-    <Compile Include="Migrations\202110110726569_Image.Designer.cs">
-      <DependentUpon>202110110726569_Image.cs</DependentUpon>
+    <Compile Include="Migrations\202111300521429_ngaolu.cs" />
+    <Compile Include="Migrations\202111300521429_ngaolu.Designer.cs">
+      <DependentUpon>202111300521429_ngaolu.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\AutoGenerateKey.cs" />
     <Compile Include="Models\ChucVu.cs" />
     <Compile Include="Models\Encrytion.cs" />
+    <Compile Include="Models\Luong.cs" />
     <Compile Include="Models\NhanVien.cs" />
+    <Compile Include="Models\NVQuanLy.cs" />
     <Compile Include="Models\PhongBan.cs" />
     <Compile Include="Models\QuanLyNhanSuDbContext.cs" />
     <Compile Include="Models\Role.cs" />
@@ -190,7 +187,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Images\Avt.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\Admins\Views\web.config" />
@@ -206,6 +202,12 @@
     <Content Include="Areas\Admins\Views\NhanViensAdmin\Delete.cshtml" />
     <Content Include="Areas\Admins\Views\NhanViensAdmin\Details.cshtml" />
     <Content Include="Areas\Admins\Views\NhanViensAdmin\Edit.cshtml" />
+    <Content Include="Areas\Admins\Views\Luongs\Create.cshtml" />
+    <Content Include="Areas\Admins\Views\Luongs\Delete.cshtml" />
+    <Content Include="Areas\Admins\Views\Luongs\Details.cshtml" />
+    <Content Include="Areas\Admins\Views\Luongs\Edit.cshtml" />
+    <Content Include="Areas\Admins\Views\Luongs\Index.cshtml" />
+    <Content Include="Areas\NVClient\Views\LuongsNV\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -244,14 +246,21 @@
     <Content Include="Views\Roles\Details.cshtml" />
     <Content Include="Views\Roles\Edit.cshtml" />
     <Content Include="Views\Roles\Index.cshtml" />
-    <Content Include="Views\NhanViens\Index.cshtml" />
     <Content Include="Views\Accounts\Login.cshtml" />
     <Content Include="Views\Accounts\Register.cshtml" />
+    <Content Include="Views\Luongs\Index.cshtml" />
+    <Content Include="Views\NVQuanLies\Create.cshtml" />
+    <Content Include="Views\NVQuanLies\Delete.cshtml" />
+    <Content Include="Views\NVQuanLies\Details.cshtml" />
+    <Content Include="Views\NVQuanLies\Edit.cshtml" />
+    <Content Include="Views\NVQuanLies\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admins\Data\" />
     <Folder Include="Areas\NVClient\Data\" />
+    <Folder Include="Images\" />
+    <Folder Include="Views\ExportExcel\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -267,23 +276,14 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202110100529034_creat_table_PB.Role.resx">
-      <DependentUpon>202110100529034_creat_table_PB.Role.cs</DependentUpon>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202111300445239_NVQL.resx">
+      <DependentUpon>202111300445239_NVQL.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202110100533596_create_table_NV.resx">
-      <DependentUpon>202110100533596_create_table_NV.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202110100538328_create_table_ACCount.resx">
-      <DependentUpon>202110100538328_create_table_ACCount.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202110100601486_1.resx">
-      <DependentUpon>202110100601486_1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202110100614272_2.resx">
-      <DependentUpon>202110100614272_2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202110110726569_Image.resx">
-      <DependentUpon>202110110726569_Image.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202111300521429_ngaolu.resx">
+      <DependentUpon>202111300521429_ngaolu.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -10,7 +10,9 @@ namespace QuanLyNhanSu.Models
     {
         [Key]
         [StringLength(10)]
+        [Display(Name ="ID")]
         public string RoleID { get; set; }
+        [Display(Name ="Đối Tượng")]
         [StringLength(50)]
         public string RoleName { get; set; }
     }

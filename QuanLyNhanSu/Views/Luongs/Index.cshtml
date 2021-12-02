@@ -1,0 +1,55 @@
+﻿@model IEnumerable<QuanLyNhanSu.Models.Luong>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/NVClient/Views/Shared/_LayoutNVClient.cshtml";
+}
+
+<h2>Index</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NhanViens.NameNhanVien)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Thang)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LuongNgay)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NgayCong)
+        </th>
+        <th>
+            Tổng Lương
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        double total = Convert.ToDouble(item.NgayCong * item.LuongNgay);
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.NhanViens.NameNhanVien)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Thang)
+            </td>
+            <td>
+
+                @string.Format("{0:#,##0}", item.LuongNgay)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayCong)
+            </td>
+            <td>
+                @string.Format("{0:#,##0}", @total)
+            </td>         
+        </tr>
+    }
+
+</table>

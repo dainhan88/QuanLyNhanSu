@@ -5,12 +5,19 @@
     Layout = "~/Areas/Admins/Views/Shared/_LayoutADM.cshtml";
 }
 
-<h2>Thông tin chi tiết</h2>
+<h2 style="text-align:center">Thông tin chi tiết</h2>
 
 <div>
-    <h4>Nhân Viên</h4>
+    
     <hr />
     <dl class="dl-horizontal">
+        <dt>
+            Mã Nhân Viên
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IDNhanVien)
+        </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.ChucVus.TenChucVu)
         </dt>

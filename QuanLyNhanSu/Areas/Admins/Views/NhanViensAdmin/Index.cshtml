@@ -5,11 +5,20 @@
     Layout = "~/Areas/Admins/Views/Shared/_LayoutADM.cshtml";
 }
 
-<h2>Danh Sách Nhân Viên</h2>
+<h2 style="text-align:center">Danh Sách Nhân Viên</h2>
 
 <p>
     @Html.ActionLink("Thêm Mới Nhân Viên", "Create")
 </p>
+
+<div class="Reg-log-wrap">
+    @using (Html.BeginForm())
+    {
+        <p>
+            Tìm kiếm: @Html.TextBox("SearchString") <input style="color:blue" type="submit" value="Tìm kiếm" class="mt-3 text-white" />
+        </p>
+    }
+</div>
 <table class="table">
     <tr>
         <th>
@@ -28,6 +37,9 @@
         </th>
         <th>
             <label>Ảnh Chân Dung</label>
+        </th>
+        <th>
+            Hỗ Trợ
         </th>
     </tr>
 

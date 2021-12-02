@@ -6,14 +6,14 @@ namespace QuanLyNhanSu.Migrations
     using System.Data.Entity.Migrations.Infrastructure;
     using System.Resources;
     
-    [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class creat_table_PBRole : IMigrationMetadata
+    [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
+    public sealed partial class NVQL : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(creat_table_PBRole));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(NVQL));
         
         string IMigrationMetadata.Id
         {
-            get { return "202110100529034_creat_table_PB.Role"; }
+            get { return "202111300445239_NVQL"; }
         }
         
         string IMigrationMetadata.Source

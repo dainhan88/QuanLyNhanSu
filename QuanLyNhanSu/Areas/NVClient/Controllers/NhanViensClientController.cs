@@ -17,10 +17,18 @@ namespace QuanLyNhanSu.Areas.NVClient.Controllers
         private QuanLyNhanSuDbContext db = new QuanLyNhanSuDbContext();
 
         // GET: NVClient/NhanViensClient
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
+            var links = from l in db.NhanViens // lấy toàn bộ liên kết
+                        select l;
+            if (!String.IsNullOrEmpty(searchString)) // kiểm tra chuỗi tìm kiếm có rỗng/null hay không
+            {
+                links = links.Where(s => s.NameNhanVien.Contains(searchString)); //lọc theo chuỗi tìm kiếm
+            }
+
+            //return View(links);
             var nhanViens = db.NhanViens.Include(n => n.ChucVus).Include(n => n.PhongBans);
-            return View(nhanViens.ToList());
+            return View(links);
         }
 
         // GET: NVClient/NhanViensClient/Details/5

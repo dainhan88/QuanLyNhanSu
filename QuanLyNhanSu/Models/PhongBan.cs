@@ -23,7 +23,7 @@ namespace QuanLyNhanSu.Models
         public string DiaChiPhongBan { get; set; }
 
 
-        [Display(Name = "Số điện thoại Phòng Ban")]
+        [Display(Name = "Số Trực Phòng Ban")]
         public int SdtPhongBan { get; set; }
         public ICollection<NhanVien> NhanViens { get; set; }
     }

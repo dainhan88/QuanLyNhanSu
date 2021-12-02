@@ -17,6 +17,9 @@ namespace QuanLyNhanSu.Models
         public virtual DbSet<NhanVien> NhanViens { get; set; }
         public virtual DbSet<ChucVu> ChucVus { get; set; }
         public virtual DbSet<Account> Accounts { get; set; }
+        public virtual DbSet<Luong> luongs { get; set; }
+        public virtual DbSet<NVQuanLy> NVQuanLys { get; set; }
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

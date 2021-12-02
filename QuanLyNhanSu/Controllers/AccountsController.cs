@@ -27,7 +27,7 @@ namespace QuanLyNhanSu.Controllers
             else if (CheckSession() == 2)
 
             {
-                return RedirectToAction("Index", "NhanViensClient", new { Area = "NVClient" });
+                return RedirectToAction("Index", "HomeNV", new { Area = "NVClient" });
 
             }
             ViewBag.ReturnUrl = returnUrl;
@@ -109,7 +109,7 @@ namespace QuanLyNhanSu.Controllers
                 }
                 else if (CheckSession() == 2)
                 {
-                    return RedirectToAction("Index", "NhanViensClient", new { Area = "NVClient" });
+                    return RedirectToAction("Index", "HomeNV", new { Area = "NVClient" });
                 }
             }
             if (Url.IsLocalUrl(returnUrl))
