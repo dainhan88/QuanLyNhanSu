@@ -69,16 +69,12 @@ namespace QuanLyNhanSu.Areas.Admins.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(/*[Bind(Include = "IDNhanVien,NameNhanVien,NgaySinhNV,SDTNhanVienName,GioiTinhNhanVien,DiaChiNhanVien,CCCDNhanVien,MaChucVu,MaPhongBan")]*/ NhanVien nhanVien)
+        public ActionResult Create(/*[Bind(Include = "IDNhanVien,NameNhanVien,NgaySinhNV,SDTNhanVienName,GioiTinhNhanVien,DiaChiNhanVien,CCCDNhanVien,MaChucVu,MaPhongBan")]*/ NhanVien nhanVien, HttpPostedFileBase NhanVienImgFile)
         {
             if (ModelState.IsValid)
             {
-                string fileName = Path.GetFileNameWithoutExtension(nhanVien.NhanVienImgFile.FileName);
-                string extension = Path.GetExtension(nhanVien.NhanVienImgFile.FileName);
-                fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
-                nhanVien.NhanVienImgName = "/Images/" + fileName;
-                fileName = Path.Combine(Server.MapPath("~/Images/"), fileName);
-                nhanVien.NhanVienImgFile.SaveAs(fileName);
+                string path = uploadimage(NhanVienImgFile);
+                nhanVien.NhanVienImgName = path;
                 db.NhanViens.Add(nhanVien);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -92,6 +88,7 @@ namespace QuanLyNhanSu.Areas.Admins.Controllers
         // GET: Admins/NhanViensAdmin/Edit/5
         public ActionResult Edit(string id)
         {
+            
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -111,8 +108,13 @@ namespace QuanLyNhanSu.Areas.Admins.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IDNhanVien,NameNhanVien,NgaySinhNV,SDTNhanVienName,GioiTinhNhanVien,DiaChiNhanVien,CCCDNhanVien,MaChucVu,MaPhongBan")] NhanVien nhanVien)
+        public ActionResult Edit(/*[Bind(Include = "IDNhanVien,NameNhanVien,NgaySinhNV,SDTNhanVienName,GioiTinhNhanVien,DiaChiNhanVien,CCCDNhanVien,MaChucVu,MaPhongBan")]*/ NhanVien nhanVien, HttpPostedFileBase NhanVienImgFile)
         {
+            string path = uploadimage(NhanVienImgFile);
+
+            // move this here, so it has value before ModelState.IsValid
+            nhanVien.NhanVienImgName = path;
+
             if (ModelState.IsValid)
             {
                 db.Entry(nhanVien).State = EntityState.Modified;
@@ -157,6 +159,43 @@ namespace QuanLyNhanSu.Areas.Admins.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public string uploadimage(HttpPostedFileBase NhanVienImgFile)
+        {
+            Random r = new Random();
+            string path = "-1";
+            int random = r.Next();
+            if (NhanVienImgFile != null && NhanVienImgFile.ContentLength > 0)
+            {
+                string extension = Path.GetExtension(NhanVienImgFile.FileName);
+                if (extension.ToLower().Equals(".jpg") || extension.ToLower().Equals(".jpeg") || extension.ToLower().Equals(".png"))
+                {
+                    try
+                    {
+                        // kết hợp đường dẫn file Images + với random và tên file
+                        path = Path.Combine(Server.MapPath("/Images/"), random + Path.GetFileName(NhanVienImgFile.FileName));
+                        //Lưu file đúng với đường dẫn vừa tạo ở trên
+                        NhanVienImgFile.SaveAs(path);
+                        // gán path bằng với đường dẫn file vừa lưu
+                        path = "/Images/" + random + Path.GetFileName(NhanVienImgFile.FileName);
+                    }
+                    catch (Exception ex)
+                    {
+                        path = "-1";
+                    }
+                }
+                else
+                {
+                    Response.Write("<script>alert('Vui lòng chỉ thêm các định dạng jpg ,jpeg or png....'); </script>");
+                }
+            }
+            else
+            {
+                Response.Write("<script>alert('Vui lòng thêm file'); </script>");
+                path = "-1";
+            }
+            return path;
         }
     }
 }

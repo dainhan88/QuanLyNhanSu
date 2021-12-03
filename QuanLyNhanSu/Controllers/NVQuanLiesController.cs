@@ -53,16 +53,12 @@ namespace QuanLyNhanSu.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(/*[Bind(Include = "IDNhanVien,NameNhanVien,NgaySinhNV,SDTNhanVienName,GioiTinhNhanVien,DiaChiNhanVien,CCCDNhanVien,NhanVienImgName,MaChucVu,MaPhongBan,Note")]*/ NVQuanLy nVQuanLy)
+        public ActionResult Create(/*[Bind(Include = "IDNhanVien,NameNhanVien,NgaySinhNV,SDTNhanVienName,GioiTinhNhanVien,DiaChiNhanVien,CCCDNhanVien,NhanVienImgName,MaChucVu,MaPhongBan,Note")]*/ NVQuanLy nVQuanLy, HttpPostedFileBase NhanVienImgFile)
         {
             if (ModelState.IsValid)
             {
-                //string fileName = Path.GetFileNameWithoutExtension(nVQuanLy.NhanVienImgFile.FileName);
-                //string extension = Path.GetExtension(nVQuanLy.NhanVienImgFile.FileName);
-                //fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
-                //nVQuanLy.NhanVienImgName = "/Images/" + fileName;
-                //fileName = Path.Combine(Server.MapPath("~/Images/"), fileName);
-                //nVQuanLy.NhanVienImgFile.SaveAs(fileName);
+                string path = uploadimage(NhanVienImgFile);
+                nVQuanLy.NhanVienImgName = (path);
                 db.NhanViens.Add(nVQuanLy);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -141,6 +137,43 @@ namespace QuanLyNhanSu.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public string uploadimage(HttpPostedFileBase file)
+        {
+            Random r = new Random();
+            string path = "-1";
+            int random = r.Next();
+            if (file != null && file.ContentLength > 0)
+            {
+                string extension = Path.GetExtension(file.FileName);
+                if (extension.ToLower().Equals(".jpg") || extension.ToLower().Equals(".jpeg") || extension.ToLower().Equals(".png"))
+                {
+                    try
+                    {
+                        // kết hợp đường dẫn file Images + với random và tên file
+                        path = Path.Combine(Server.MapPath("/Images/"), random + Path.GetFileName(file.FileName));
+                        //Lưu file đúng với đường dẫn vừa tạo ở trên
+                        file.SaveAs(path);
+                        // gán path bằng với đường dẫn file vừa lưu
+                        path = "/Images/" + random + Path.GetFileName(file.FileName);
+                    }
+                    catch (Exception ex)
+                    {
+                        path = "-1";
+                    }
+                }
+                else
+                {
+                    Response.Write("<script>alert('Vui lòng chỉ thêm các định dạng jpg ,jpeg or png....'); </script>");
+                }
+            }
+            else
+            {
+                Response.Write("<script>alert('Vui lòng thêm file'); </script>");
+                path = "-1";
+            }
+            return path;
         }
     }
 }

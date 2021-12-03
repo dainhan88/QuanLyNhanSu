@@ -11,11 +11,15 @@
     @Html.ActionLink("Thêm Mới Nhân Viên", "Create")
 </p>
 
-<div class="Reg-log-wrap">
+<div class="searchString">
     @using (Html.BeginForm())
     {
         <p>
-            Tìm kiếm: @Html.TextBox("SearchString") <input style="color:blue" type="submit" value="Tìm kiếm" class="mt-3 text-white" />
+            <div class="form-group d-flex">
+                <label style="color:blue" class="control-label">Tìm Kiếm:</label>
+                <input class="form-control" name="searchString" placeholder="Nhập Tên Nhân Vên" />
+            </div>
+            <input type="submit" value="Tìm kiếm" class="btn btn-primary" />
         </p>
     }
 </div>

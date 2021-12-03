@@ -162,6 +162,14 @@
     <Compile Include="Migrations\202111300521429_ngaolu.Designer.cs">
       <DependentUpon>202111300521429_ngaolu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202112030410461_qlimgae.cs" />
+    <Compile Include="Migrations\202112030410461_qlimgae.Designer.cs">
+      <DependentUpon>202112030410461_qlimgae.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202112030425597_qlimga2.cs" />
+    <Compile Include="Migrations\202112030425597_qlimga2.Designer.cs">
+      <DependentUpon>202112030425597_qlimga2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\AutoGenerateKey.cs" />
@@ -260,7 +268,7 @@
     <Folder Include="Areas\Admins\Data\" />
     <Folder Include="Areas\NVClient\Data\" />
     <Folder Include="Images\" />
-    <Folder Include="Views\ExportExcel\" />
+    <Folder Include="Uploads\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -284,6 +292,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202111300521429_ngaolu.resx">
       <DependentUpon>202111300521429_ngaolu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112030410461_qlimgae.resx">
+      <DependentUpon>202112030410461_qlimgae.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112030425597_qlimga2.resx">
+      <DependentUpon>202112030425597_qlimga2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

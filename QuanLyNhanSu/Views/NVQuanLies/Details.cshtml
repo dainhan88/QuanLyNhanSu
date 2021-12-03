@@ -5,12 +5,20 @@
     Layout = "~/Areas/Admins/Views/Shared/_LayoutADM.cshtml";
 }
 
-<h2>Details</h2>
+<h2>Chi Tiết thông tin</h2>
 
 <div>
-    <h4>NVQuanLy</h4>
+    <h4>Nhân Viên Quản Lý</h4>
     <hr />
     <dl class="dl-horizontal">
+        <dt>
+            Mã Nhân Viên
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IDNhanVien)
+        </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.ChucVus.TenChucVu)
         </dt>
@@ -94,6 +102,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.IDNhanVien }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.IDNhanVien }) |
+    @Html.ActionLink("Quay Lại", "Index")
 </p>

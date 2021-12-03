@@ -10,12 +10,23 @@
 <p>
     @Html.ActionLink("Cập Nhật Lương", "Create")
 </p>
+@*@using (Html.BeginForm("Upfile", "Luongs", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <input type="file" name="file" />
+    <br />
+    <input type="submit" value="Import to database" class="btn btn-primary" />
+}*@
+<br />
 
-<div class="Reg-log-wrap">
+<div class="searchString">
     @using (Html.BeginForm())
     {
         <p>
-            Tìm kiếm: @Html.TextBox("SearchString") <input style="color:blue" type="submit" value="Tìm kiếm" class="mt-3 text-white" />
+            <div class="form-group d-flex">
+                <label style="color:blue" class="control-label">Tìm Kiếm:</label>
+                <input class="form-control" name="searchString" placeholder="Nhập Mã Nhân Vên" />
+            </div>
+            <input type="submit" value="Tìm kiếm" class="btn btn-primary" />
         </p>
     }
 </div>
@@ -29,7 +40,7 @@
             Ngày Sinh
         </th>
         <th>
-           Số Điện Thoại
+            Số Điện Thoại
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Thang)
@@ -49,40 +60,40 @@
     @foreach (var item in Model)
     {
         double total = Convert.ToDouble(item.NgayCong * item.LuongNgay);
-<tr>
+        <tr>
 
-    <td>
-        @Html.DisplayFor(modelItem => item.NhanViens.IDNhanVien)
-    </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NhanViens.IDNhanVien)
+            </td>
 
-    <td>
-        @Html.DisplayFor(modelItem => item.NhanViens.NameNhanVien)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.NhanViens.NgaySinhNV)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.NhanViens.SDTNhanVienName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Thang)
-    </td>
-    <td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NhanViens.NameNhanVien)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NhanViens.NgaySinhNV)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NhanViens.SDTNhanVienName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Thang)
+            </td>
+            <td>
 
-        @string.Format("{0:#,##0}", item.LuongNgay)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.NgayCong)
-    </td>
-    <td>
-        @string.Format("{0:#,##0}", @total)
-    </td>
-    <td>
-        @Html.ActionLink("Chỉnh Sửa", "Edit", new { id = item.ID }) |
-        @Html.ActionLink("Chi Tiết", "Details", new { id = item.ID }) |
-        @Html.ActionLink("Xóa", "Delete", new { id = item.ID })
-    </td>
-</tr>
+                @string.Format("{0:#,##0}", item.LuongNgay)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayCong)
+            </td>
+            <td>
+                @string.Format("{0:#,##0}", @total)
+            </td>
+            <td>
+                @Html.ActionLink("Chỉnh Sửa", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Chi Tiết", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Xóa", "Delete", new { id = item.ID })
+            </td>
+        </tr>
     }
 
 </table>

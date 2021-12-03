@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.OleDb;
+using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -13,7 +16,85 @@ namespace QuanLyNhanSu.Areas.Admins.Controllers
     public class LuongsController : Controller
     {
         private QuanLyNhanSuDbContext db = new QuanLyNhanSuDbContext();
+        //public ActionResult Upfile()
+        //{
+        //    return View();
+        //}
+        //[HttpPost]
+        //public ActionResult Upfile(HttpPostedFileBase file)
+        //{
+        //    string filePath = string.Empty;
+        //    if (file != null)
+        //    {
+        //        string path = Server.MapPath("~/Uploads/");
 
+        //        filePath = path + Path.GetFileName(file.FileName);
+        //        string extension = Path.GetExtension(file.FileName);
+        //        file.SaveAs(filePath);
+
+        //        string conString = string.Empty;
+
+        //        switch (extension)
+        //        {
+        //            case ".xls": //Excel 97-03.
+        //                conString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + filePath + ";Extended Properties='Excel 8.0;HDR=YES'";
+        //                break;
+        //            case ".xlsx": //Excel 07 and above.
+        //                conString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + filePath + ";Extended Properties='Excel 8.0;HDR=YES'";
+        //                //conString = "Provider=Microsoft.ACE.OLEDB.16.0;Data Source=" + filePath + ";Extended Properties='Excel 12.0 Xml;HDR=Yes'";
+        //                break;
+        //        }
+
+        //        DataTable dt = new DataTable();
+        //        conString = string.Format(conString, filePath);
+
+        //        using (OleDbConnection connExcel = new OleDbConnection(conString))
+        //        {
+        //            using (OleDbCommand cmdExcel = new OleDbCommand())
+        //            {
+        //                using (OleDbDataAdapter odaExcel = new OleDbDataAdapter())
+        //                {
+        //                    cmdExcel.Connection = connExcel;
+
+        //                    //Get the name of First Sheet.
+        //                    connExcel.Open();
+        //                    DataTable dtExcelSchema;
+        //                    dtExcelSchema = connExcel.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
+        //                    string sheetName = dtExcelSchema.Rows[0]["TABLE_NAME"].ToString();
+        //                    connExcel.Close();
+
+        //                    //Read Data from First Sheet.
+        //                    connExcel.Open();
+        //                    cmdExcel.CommandText = "SELECT * From [" + sheetName + "]";
+        //                    odaExcel.SelectCommand = cmdExcel;
+        //                    odaExcel.Fill(dt);
+        //                    connExcel.Close();
+        //                }
+        //            }
+        //        }
+
+        //        conString = @"data source=DAINHAN\SQLEXPRESS;initial catalog=QuanLyNhanSu;integrated security=True";
+        //        using (SqlConnection con = new SqlConnection(conString))
+        //        {
+        //            using (SqlBulkCopy sqlBulkCopy = new SqlBulkCopy(con))
+        //            {
+        //                //Set the database table name.
+        //                sqlBulkCopy.DestinationTableName = "dbo.Luongs";
+        //                sqlBulkCopy.ColumnMappings.Add("Thang", "Thang");
+        //                sqlBulkCopy.ColumnMappings.Add("IDNhanVien", "IDNhanVien");                     
+        //                sqlBulkCopy.ColumnMappings.Add("LuongNgay", "LuongNgay");
+        //                sqlBulkCopy.ColumnMappings.Add("NgayCong", "NgayCong");
+        //                con.Open();
+        //                sqlBulkCopy.WriteToServer(dt);
+        //                con.Close();
+        //            }
+        //        }
+        //    }
+        //    //if the code reach here means everthing goes fine and excel data is imported into database
+        //    ViewBag.Success = "Thêm dữ liệu thành công";
+
+        //    return RedirectToAction("Index");
+        //}
         // GET: Admins/Luongs
         public ActionResult Index( string searchString)
         {

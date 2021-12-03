@@ -21,24 +21,17 @@
         <th>
             @Html.DisplayNameFor(model => model.NameNhanVien)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NgaySinhNV)
-        </th>
+
         <th>
             @Html.DisplayNameFor(model => model.SDTNhanVienName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.GioiTinhNhanVien)
         </th>
+
         <th>
-            @Html.DisplayNameFor(model => model.DiaChiNhanVien)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CCCDNhanVien)
-        </th>
-        @*<th>
            Ảnh Chân Dung
-        </th>*@
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.Note)
         </th>
@@ -56,24 +49,18 @@
     <td>
         @Html.DisplayFor(modelItem => item.NameNhanVien)
     </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.NgaySinhNV)
-    </td>
+
     <td>
         @Html.DisplayFor(modelItem => item.SDTNhanVienName)
     </td>
     <td>
         @Html.DisplayFor(modelItem => item.GioiTinhNhanVien)
     </td>
+
+
     <td>
-        @Html.DisplayFor(modelItem => item.DiaChiNhanVien)
+        <img src="@item.NhanVienImgName" width="150px" />
     </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.CCCDNhanVien)
-    </td>
-    @*<td>
-        <img src="@item.NhanVienImgName" width="150" />
-    </td>*@
     <td>
         @Html.DisplayFor(modelItem => item.Note)
     </td>
