@@ -12,17 +12,21 @@ namespace QuanLyNhanSu.Models
        [Key]
      
         public int ID { get; set; }
+        
+        [Display(Name = "Nhân Viên")]
+        public String IDNhanVien { get; set; }
         [Display(Name = "Tháng")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime Thang { get; set; }
-        [Display(Name = "Nhân Viên")]
-        public String IDNhanVien { get; set; }
         [Display(Name = "Lương Ngày")]
         public float LuongNgay { get; set; }
         [Display(Name = "Số ngày đi làm")]
         public float NgayCong { get; set; }
+        [Display(Name = "Tạm Ứng")]
+        public float TamUng { get; set; }
         public virtual NhanVien NhanViens { get; set; }
+       
 
     }
 }

@@ -181,6 +181,10 @@
     <Compile Include="Migrations\202112040133307_1.Designer.cs">
       <DependentUpon>202112040133307_1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202112040633006_add Column TamUng Luong.cs" />
+    <Compile Include="Migrations\202112040633006_add Column TamUng Luong.Designer.cs">
+      <DependentUpon>202112040633006_add Column TamUng Luong.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\AutoGenerateKey.cs" />
@@ -192,6 +196,7 @@
     <Compile Include="Models\NVQuanLy.cs" />
     <Compile Include="Models\PhongBan.cs" />
     <Compile Include="Models\QuanLyNhanSuDbContext.cs" />
+    <Compile Include="Models\ReadDataFromExcelFile.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\StringProcess.cs" />
     <Compile Include="Models\UsersRoleProvidercs.cs" />
@@ -268,7 +273,6 @@
     <Content Include="Views\Roles\Index.cshtml" />
     <Content Include="Views\Accounts\Login.cshtml" />
     <Content Include="Views\Accounts\Register.cshtml" />
-    <Content Include="Views\Luongs\Index.cshtml" />
     <Content Include="Views\NVQuanLies\Create.cshtml" />
     <Content Include="Views\NVQuanLies\Delete.cshtml" />
     <Content Include="Views\NVQuanLies\Details.cshtml" />
@@ -287,7 +291,7 @@
     <Folder Include="Areas\Admins\Data\" />
     <Folder Include="Areas\NVClient\Data\" />
     <Folder Include="Images\" />
-    <Folder Include="Uploads\" />
+    <Folder Include="Uploads\Excels\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -323,6 +327,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202112040133307_1.resx">
       <DependentUpon>202112040133307_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112040633006_add Column TamUng Luong.resx">
+      <DependentUpon>202112040633006_add Column TamUng Luong.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

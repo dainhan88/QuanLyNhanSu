@@ -44,3 +44,9 @@ h4{
 .a:hover{
     color:darkviolet;
 }
+.dt{
+    text-align:center;
+}
+.dd{
+    text-align:center;
+}

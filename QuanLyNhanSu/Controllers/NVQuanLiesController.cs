@@ -16,10 +16,16 @@ namespace QuanLyNhanSu.Controllers
         private QuanLyNhanSuDbContext db = new QuanLyNhanSuDbContext();
         AutoGenerateKey auto = new AutoGenerateKey();
         // GET: NVQuanLies
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
+            var links = from l in db.NVQuanLys // lấy toàn bộ liên kết
+                        select l;
+            if (!String.IsNullOrEmpty(searchString)) // kiểm tra chuỗi tìm kiếm có rỗng/null hay không
+            {
+                links = links.Where(s => s.NameNhanVien.Contains(searchString)); //lọc theo chuỗi tìm kiếm
+            }
             var nhanViens = db.NVQuanLys.Include(n => n.ChucVus).Include(n => n.PhongBans);
-            return View(nhanViens.ToList());
+            return View(links);
         }
 
         // GET: NVQuanLies/Details/5

@@ -41,6 +41,9 @@
             @Html.DisplayNameFor(model => model.NgayCong)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.TamUng)
+        </th>
+        <th>
             Tổng Lương
         </th>
         <th></th>
@@ -48,41 +51,42 @@
 
     @foreach (var item in Model)
     {
-        double total = Convert.ToDouble(item.NgayCong * item.LuongNgay);
-        <tr>
+        double total = Convert.ToDouble(item.NgayCong * item.LuongNgay - item.TamUng);
+<tr>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.NhanViens.IDNhanVien)
-            </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NhanViens.IDNhanVien)
+    </td>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.NhanViens.NameNhanVien)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NhanViens.NgaySinhNV)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NhanViens.SDTNhanVienName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Thang)
-            </td>
-            <td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NhanViens.NameNhanVien)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NhanViens.NgaySinhNV)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NhanViens.SDTNhanVienName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Thang)
+    </td>
+    <td>
 
-                @string.Format("{0:#,##0}", item.LuongNgay)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NgayCong)
-            </td>
-            <td>
-                @string.Format("{0:#,##0}", @total)
-            </td>
-            <td>
-                @Html.ActionLink("Chỉnh Sửa", "Edit", new { id = item.ID }) |
-                @Html.ActionLink("Chi Tiết", "Details", new { id = item.ID }) |
-                @Html.ActionLink("Xóa", "Delete", new { id = item.ID })
-            </td>
-        </tr>
+        @string.Format("{0:#,##0}", item.LuongNgay)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NgayCong)
+    </td>
+    <td>
+
+        @string.Format("{0:#,##0}", item.TamUng)
+    </td>
+    <td>
+        @string.Format("{0:#,##0}", @total)
+    </td>
+    <td>
+    </td>
+</tr>
     }
 
 </table>

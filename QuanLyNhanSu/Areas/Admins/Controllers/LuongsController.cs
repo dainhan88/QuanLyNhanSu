@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.Entity;
 using System.Data.OleDb;
@@ -16,85 +17,7 @@ namespace QuanLyNhanSu.Areas.Admins.Controllers
     public class LuongsController : Controller
     {
         private QuanLyNhanSuDbContext db = new QuanLyNhanSuDbContext();
-        //public ActionResult Upfile()
-        //{
-        //    return View();
-        //}
-        //[HttpPost]
-        //public ActionResult Upfile(HttpPostedFileBase file)
-        //{
-        //    string filePath = string.Empty;
-        //    if (file != null)
-        //    {
-        //        string path = Server.MapPath("~/Uploads/");
-
-        //        filePath = path + Path.GetFileName(file.FileName);
-        //        string extension = Path.GetExtension(file.FileName);
-        //        file.SaveAs(filePath);
-
-        //        string conString = string.Empty;
-
-        //        switch (extension)
-        //        {
-        //            case ".xls": //Excel 97-03.
-        //                conString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + filePath + ";Extended Properties='Excel 8.0;HDR=YES'";
-        //                break;
-        //            case ".xlsx": //Excel 07 and above.
-        //                conString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + filePath + ";Extended Properties='Excel 8.0;HDR=YES'";
-        //                //conString = "Provider=Microsoft.ACE.OLEDB.16.0;Data Source=" + filePath + ";Extended Properties='Excel 12.0 Xml;HDR=Yes'";
-        //                break;
-        //        }
-
-        //        DataTable dt = new DataTable();
-        //        conString = string.Format(conString, filePath);
-
-        //        using (OleDbConnection connExcel = new OleDbConnection(conString))
-        //        {
-        //            using (OleDbCommand cmdExcel = new OleDbCommand())
-        //            {
-        //                using (OleDbDataAdapter odaExcel = new OleDbDataAdapter())
-        //                {
-        //                    cmdExcel.Connection = connExcel;
-
-        //                    //Get the name of First Sheet.
-        //                    connExcel.Open();
-        //                    DataTable dtExcelSchema;
-        //                    dtExcelSchema = connExcel.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
-        //                    string sheetName = dtExcelSchema.Rows[0]["TABLE_NAME"].ToString();
-        //                    connExcel.Close();
-
-        //                    //Read Data from First Sheet.
-        //                    connExcel.Open();
-        //                    cmdExcel.CommandText = "SELECT * From [" + sheetName + "]";
-        //                    odaExcel.SelectCommand = cmdExcel;
-        //                    odaExcel.Fill(dt);
-        //                    connExcel.Close();
-        //                }
-        //            }
-        //        }
-
-        //        conString = @"data source=DAINHAN\SQLEXPRESS;initial catalog=QuanLyNhanSu;integrated security=True";
-        //        using (SqlConnection con = new SqlConnection(conString))
-        //        {
-        //            using (SqlBulkCopy sqlBulkCopy = new SqlBulkCopy(con))
-        //            {
-        //                //Set the database table name.
-        //                sqlBulkCopy.DestinationTableName = "dbo.Luongs";
-        //                sqlBulkCopy.ColumnMappings.Add("Thang", "Thang");
-        //                sqlBulkCopy.ColumnMappings.Add("IDNhanVien", "IDNhanVien");                     
-        //                sqlBulkCopy.ColumnMappings.Add("LuongNgay", "LuongNgay");
-        //                sqlBulkCopy.ColumnMappings.Add("NgayCong", "NgayCong");
-        //                con.Open();
-        //                sqlBulkCopy.WriteToServer(dt);
-        //                con.Close();
-        //            }
-        //        }
-        //    }
-        //    //if the code reach here means everthing goes fine and excel data is imported into database
-        //    ViewBag.Success = "Thêm dữ liệu thành công";
-
-        //    return RedirectToAction("Index");
-        //}
+        ReadDataFromExcelFile excelPro = new ReadDataFromExcelFile();
         // GET: Admins/Luongs
         public ActionResult Index( string searchString)
         {
@@ -106,6 +29,37 @@ namespace QuanLyNhanSu.Areas.Admins.Controllers
             }
             var luongs = db.luongs.Include(l => l.NhanViens);
             return View(links);
+        }
+        [HttpPost]
+
+        public ActionResult Index(HttpPostedFileBase file)
+        {
+            DataTable dt = CopyDataFromExcelFile(file);
+            OverwriteFastData(dt);
+            return RedirectToAction("Index", "Luongs");
+        }
+        public DataTable CopyDataFromExcelFile(HttpPostedFileBase file)
+        {
+            string fileExtention = file.FileName.Substring(file.FileName.IndexOf("."));
+            string _FileName = "Luongs" + fileExtention; //Tên file Excel
+            string _path = Path.Combine(Server.MapPath("~/Uploads/Excels"), _FileName);
+            file.SaveAs(_path);
+            DataTable dt = excelPro.ReadDataFromExcelFiles(_path, true);
+            return dt;
+        }
+        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["QuanLyNhanSuDbContext"].ConnectionString);
+        private void OverwriteFastData(DataTable dt)
+        {
+            SqlBulkCopy bulkCopy = new SqlBulkCopy(con);
+            bulkCopy.DestinationTableName = "Luongs";
+            bulkCopy.ColumnMappings.Add(0, "IDNhanVien");
+            bulkCopy.ColumnMappings.Add(1, "Thang");
+            bulkCopy.ColumnMappings.Add(2, "LuongNgay");
+            bulkCopy.ColumnMappings.Add(3, "NgayCong");
+            bulkCopy.ColumnMappings.Add(4, "TamUng");
+            con.Open();
+            bulkCopy.WriteToServer(dt);
+            con.Close();
         }
 
         // GET: Admins/Luongs/Details/5
@@ -135,7 +89,7 @@ namespace QuanLyNhanSu.Areas.Admins.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Thang,IDNhanVien,LuongNgay,NgayCong")] Luong luong)
+        public ActionResult Create([Bind(Include = "ID,Thang,IDNhanVien,LuongNgay,NgayCong,TamUng")] Luong luong)
         {
             if (ModelState.IsValid)
             {
@@ -169,7 +123,7 @@ namespace QuanLyNhanSu.Areas.Admins.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Thang,IDNhanVien,LuongNgay,NgayCong")] Luong luong)
+        public ActionResult Edit([Bind(Include = "ID,Thang,IDNhanVien,LuongNgay,NgayCong,TamUng")] Luong luong)
         {
             if (ModelState.IsValid)
             {

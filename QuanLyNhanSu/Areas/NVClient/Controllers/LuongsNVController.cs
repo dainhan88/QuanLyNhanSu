@@ -54,7 +54,7 @@ namespace QuanLyNhanSu.Areas.NVClient.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Thang,IDNhanVien,LuongNgay,NgayCong")] Luong luong)
+        public ActionResult Create([Bind(Include = "ID,Thang,IDNhanVien,LuongNgay,NgayCong,TamUng")] Luong luong)
         {
             if (ModelState.IsValid)
             {
@@ -88,7 +88,7 @@ namespace QuanLyNhanSu.Areas.NVClient.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Thang,IDNhanVien,LuongNgay,NgayCong")] Luong luong)
+        public ActionResult Edit([Bind(Include = "ID,Thang,IDNhanVien,LuongNgay,NgayCong,TamUng")] Luong luong)
         {
             if (ModelState.IsValid)
             {

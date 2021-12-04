@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.Entity;
+using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -13,14 +16,12 @@ namespace QuanLyNhanSu.Controllers
     public class LuongsController : Controller
     {
         private QuanLyNhanSuDbContext db = new QuanLyNhanSuDbContext();
-
         // GET: Luongs
         public ActionResult Index()
         {
             var luongs = db.luongs.Include(l => l.NhanViens);
             return View(luongs.ToList());
-        }
-
+        }     
         // GET: Luongs/Details/5
         public ActionResult Details(int? id)
         {
@@ -48,7 +49,7 @@ namespace QuanLyNhanSu.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Thang,IDNhanVien,LuongNgay,NgayCong")] Luong luong)
+        public ActionResult Create([Bind(Include = "ID,Thang,IDNhanVien,LuongNgay,NgayCong,TamUng")] Luong luong)
         {
             if (ModelState.IsValid)
             {
@@ -82,7 +83,7 @@ namespace QuanLyNhanSu.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Thang,IDNhanVien,LuongNgay,NgayCong")] Luong luong)
+        public ActionResult Edit([Bind(Include = "ID,Thang,IDNhanVien,LuongNgay,NgayCong,TamUng")] Luong luong)
         {
             if (ModelState.IsValid)
             {

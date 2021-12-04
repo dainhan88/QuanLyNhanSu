@@ -10,6 +10,18 @@
 <p>
     @Html.ActionLink("Thêm Mới", "Create")
 </p>
+<div class="searchString">
+    @using (Html.BeginForm())
+    {
+        <p>
+            <div class="form-group d-flex">
+                <label style="color:blue" class="control-label">Tìm Kiếm:</label>
+                <input class="form-control" name="searchString" placeholder="Nhập Tên Nhân Vên" />
+            </div>
+            <input type="submit" value="Tìm kiếm" class="btn btn-primary" />
+        </p>
+    }
+</div>
 <table class="table">
     <tr>
         <th>
