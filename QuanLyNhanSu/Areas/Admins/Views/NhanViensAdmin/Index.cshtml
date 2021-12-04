@@ -11,6 +11,7 @@
     @Html.ActionLink("Thêm Mới Nhân Viên", "Create")
 </p>
 
+<br />
 <div class="searchString">
     @using (Html.BeginForm())
     {
@@ -68,9 +69,9 @@
                 <img src="@item.NhanVienImgName" width="150" />
             </td>
             <td>
-                @Html.ActionLink("Chỉnh Sửa", "Edit", new { id = item.IDNhanVien }) |
+                @Html.ActionLink("Sửa", "Edit", new { id = item.IDNhanVien }) |
                 @Html.ActionLink("Chi Tiết", "Details", new { id = item.IDNhanVien }) |
-                @Html.ActionLink("Xóa Bỏ", "Delete", new { id = item.IDNhanVien })
+                @Html.ActionLink("Xóa", "Delete", new { id = item.IDNhanVien })
             </td>
 
         </tr>

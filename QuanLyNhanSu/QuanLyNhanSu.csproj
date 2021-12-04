@@ -146,11 +146,14 @@
     <Compile Include="Areas\NVClient\NVClientAreaRegistration.cs" />
     <Compile Include="Controllers\AccountsController.cs" />
     <Compile Include="Controllers\ChucVusController.cs" />
+    <Compile Include="Controllers\DangKyTuyenDungsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LuongsController.cs" />
     <Compile Include="Controllers\NVQuanLiesController.cs" />
     <Compile Include="Controllers\PhongBansController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
+    <Compile Include="Controllers\ThanhCongController.cs" />
+    <Compile Include="Controllers\TuyenDungController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -170,10 +173,19 @@
     <Compile Include="Migrations\202112030425597_qlimga2.Designer.cs">
       <DependentUpon>202112030425597_qlimga2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202112040117160_DKTD.cs" />
+    <Compile Include="Migrations\202112040117160_DKTD.Designer.cs">
+      <DependentUpon>202112040117160_DKTD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202112040133307_1.cs" />
+    <Compile Include="Migrations\202112040133307_1.Designer.cs">
+      <DependentUpon>202112040133307_1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\AutoGenerateKey.cs" />
     <Compile Include="Models\ChucVu.cs" />
+    <Compile Include="Models\DangKyTuyenDung.cs" />
     <Compile Include="Models\Encrytion.cs" />
     <Compile Include="Models\Luong.cs" />
     <Compile Include="Models\NhanVien.cs" />
@@ -262,6 +274,13 @@
     <Content Include="Views\NVQuanLies\Details.cshtml" />
     <Content Include="Views\NVQuanLies\Edit.cshtml" />
     <Content Include="Views\NVQuanLies\Index.cshtml" />
+    <Content Include="Views\TuyenDung\Index.cshtml" />
+    <Content Include="Views\DangKyTuyenDungs\Create.cshtml" />
+    <Content Include="Views\DangKyTuyenDungs\Delete.cshtml" />
+    <Content Include="Views\DangKyTuyenDungs\Details.cshtml" />
+    <Content Include="Views\DangKyTuyenDungs\Edit.cshtml" />
+    <Content Include="Views\DangKyTuyenDungs\Index.cshtml" />
+    <Content Include="Views\ThanhCong\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -298,6 +317,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202112030425597_qlimga2.resx">
       <DependentUpon>202112030425597_qlimga2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112040117160_DKTD.resx">
+      <DependentUpon>202112040117160_DKTD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112040133307_1.resx">
+      <DependentUpon>202112040133307_1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
