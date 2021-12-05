@@ -77,7 +77,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.NhanVienImgName, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            <input type="file" name="NhanVienImgFile" id ="NhanVienImgFile" required />
+            <input type="file" name="NhanVienImgFile" id="NhanVienImgFile" required />
         </div>
     </div>
 
@@ -94,6 +94,13 @@
         <div class="col-md-10">
             @Html.DropDownList("MaPhongBan", null, htmlAttributes: new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.MaPhongBan, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.NgayVao, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.NgayVao, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.NgayVao, "", new { @class = "text-danger" })
         </div>
     </div>
 

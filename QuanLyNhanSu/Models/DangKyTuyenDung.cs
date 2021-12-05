@@ -46,5 +46,9 @@ namespace QuanLyNhanSu.Models
 
         [Display(Name = "Vị Trí Ứng Tuyển")]
         public string ViTriUngTuyen { get; set; }
+
+
+        [Display(Name = "Kinh Nghiệm")]
+        public string KinhNghiem { get; set; }
     }
 }

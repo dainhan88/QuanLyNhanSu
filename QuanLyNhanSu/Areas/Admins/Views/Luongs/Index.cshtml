@@ -17,7 +17,19 @@
         <input type="submit" value="Import to database" class="btn btn-primary" />
     }*@
 <br />
-<div>
+<div class="import-search-wrap">
+    <div class="searchString">
+        @using (Html.BeginForm())
+        {
+            <p>
+                <div class="form-group d-flex">
+                    <label style="color:blue" class="control-label">Tìm Kiếm:</label>
+                    <input class="form-control" name="searchString" placeholder="Nhập Mã Nhân Vên" />
+                </div>
+                <input type="submit" value="Tìm kiếm" class="btn btn-primary" />
+            </p>
+        }
+    </div>
     @using (Html.BeginForm("index", "Luongs", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         <div>
@@ -25,23 +37,13 @@
             <input type="submit" value="Cập Nhật Lương" class="btn btn-danger" />
         </div>
     }
+
 </div>
 
 
-<div class="searchString">
-    @using (Html.BeginForm())
-    {
-        <p>
-            <div class="form-group d-flex">
-                <label style="color:blue" class="control-label">Tìm Kiếm:</label>
-                <input class="form-control" name="searchString" placeholder="Nhập Mã Nhân Vên" />
-            </div>
-            <input type="submit" value="Tìm kiếm" class="btn btn-primary" />
-        </p>
-    }
-</div>
+
 <table class="table">
-    <tr>
+    <tr class="label-Luong">
         <th>Mã Nhân Viên</th>
         <th>
             @Html.DisplayNameFor(model => model.NhanViens.NameNhanVien)
@@ -67,7 +69,9 @@
         <th>
             Tổng Lương
         </th>
-        <th></th>
+        <th>
+            Hỗ Trợ
+        </th>      
     </tr>
 
     @foreach (var item in Model)
@@ -102,11 +106,28 @@
                 @string.Format("{0:#,##0}", @total)
             </td>
             <td>
-                @Html.ActionLink("Sửa", "Edit", new { id = item.ID }) |
+                <a href="~/Admins/Luongs/Edit/@item.ID" class="btn-primary btn">Sửa</a> |
 
-                @Html.ActionLink("Xóa", "Delete", new { id = item.ID })
+                <a href="~/Admins/Luongs/Delete/@item.ID" class="btn-primary btn">Xóa</a>
             </td>
         </tr>
     }
-
+    
 </table>
+<style>
+    .label-Luong {
+        background-color: #259351;
+        color: white;
+        font-weight: 600;
+    }
+    table, th, td {
+        border: 1px solid black;
+        text-align: center;
+    }
+    .import-search-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+</style>

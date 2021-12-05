@@ -20,6 +20,7 @@ namespace QuanLyNhanSu.Models
         public virtual DbSet<Luong> luongs { get; set; }
         public virtual DbSet<NVQuanLy> NVQuanLys { get; set; }
         public virtual DbSet<DangKyTuyenDung> DangKyTuyenDungs { get; set; }
+        public virtual DbSet<NhanVienThucTap> NhanVienThucTaps { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

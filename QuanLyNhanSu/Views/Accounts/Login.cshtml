@@ -5,15 +5,16 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Đăng Nhập</h2>
+<h2 style="width:980px;">Đăng Nhập</h2>
 
-
+<br />
+<br />
+<br />
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4 style="color:blue">Nhập Thông Tin Tài Khoản</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -43,7 +44,13 @@
 <div>
     @Html.ActionLink("Quay Lại", "Index")
 </div>
-
+<style>
+    .form-horizontal {
+        color: red;
+        margin: auto;
+        width: 700px;
+    }
+</style>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }

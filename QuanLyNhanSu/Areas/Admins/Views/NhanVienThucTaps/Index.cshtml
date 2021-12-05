@@ -1,0 +1,89 @@
+﻿@model IEnumerable<QuanLyNhanSu.Models.NhanVienThucTap>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admins/Views/Shared/_LayoutADM.cshtml";
+}
+
+<h2>Danh Sách Nhân Viên Thực Tập</h2>
+
+<p>
+    @Html.ActionLink("Thêm Mới", "Create")
+</p>
+<br />
+<div class="searchString">
+    @using (Html.BeginForm())
+    {
+        <p>
+            <div class="form-group d-flex">
+                <label style="color:blue" class="control-label">Tìm Kiếm:</label>
+                <input class="form-control" name="searchString" placeholder="Nhập Tên Nhân Vên" />
+            </div>
+            <input type="submit" value="Tìm kiếm" class="btn btn-primary" />
+        </p>
+    }
+</div>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ChucVus.TenChucVu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhongBans.TenPhongBan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NameNhanVien)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.SDTNhanVienName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GioiTinhNhanVien)
+        </th>
+
+
+        <th>
+            @Html.DisplayNameFor(model => model.NgayVao)
+        </th>
+        <th>
+            Thời Gian Thực Tập
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ChucVus.TenChucVu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PhongBans.TenPhongBan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NameNhanVien)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.SDTNhanVienName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GioiTinhNhanVien)
+        </td>
+
+
+        <td>
+            @Html.DisplayFor(modelItem => item.NgayVao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ThoiGianThucTap)
+        </td>
+        <td>
+            @Html.ActionLink("Sửa", "Edit", new { id=item.IDNhanVien }) |
+            @Html.ActionLink("Chi Tiết", "Details", new { id=item.IDNhanVien }) |
+            @Html.ActionLink("Xóa", "Delete", new { id=item.IDNhanVien })
+        </td>
+    </tr>
+}
+
+</table>

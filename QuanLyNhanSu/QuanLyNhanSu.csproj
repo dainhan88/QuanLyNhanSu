@@ -140,6 +140,7 @@
     <Compile Include="Areas\Admins\Controllers\HomeAdminController.cs" />
     <Compile Include="Areas\Admins\Controllers\LuongsController.cs" />
     <Compile Include="Areas\Admins\Controllers\NhanViensAdminController.cs" />
+    <Compile Include="Areas\Admins\Controllers\NhanVienThucTapsController.cs" />
     <Compile Include="Areas\NVClient\Controllers\HomeNVController.cs" />
     <Compile Include="Areas\NVClient\Controllers\LuongsNVController.cs" />
     <Compile Include="Areas\NVClient\Controllers\NhanViensClientController.cs" />
@@ -185,6 +186,18 @@
     <Compile Include="Migrations\202112040633006_add Column TamUng Luong.Designer.cs">
       <DependentUpon>202112040633006_add Column TamUng Luong.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202112050300151_5.cs" />
+    <Compile Include="Migrations\202112050300151_5.Designer.cs">
+      <DependentUpon>202112050300151_5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202112051303432_add Column KinhNghiem.cs" />
+    <Compile Include="Migrations\202112051303432_add Column KinhNghiem.Designer.cs">
+      <DependentUpon>202112051303432_add Column KinhNghiem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202112051316440_Table-NVTT.cs" />
+    <Compile Include="Migrations\202112051316440_Table-NVTT.Designer.cs">
+      <DependentUpon>202112051316440_Table-NVTT.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\AutoGenerateKey.cs" />
@@ -193,6 +206,7 @@
     <Compile Include="Models\Encrytion.cs" />
     <Compile Include="Models\Luong.cs" />
     <Compile Include="Models\NhanVien.cs" />
+    <Compile Include="Models\NhanVienThucTap.cs" />
     <Compile Include="Models\NVQuanLy.cs" />
     <Compile Include="Models\PhongBan.cs" />
     <Compile Include="Models\QuanLyNhanSuDbContext.cs" />
@@ -233,6 +247,11 @@
     <Content Include="Areas\Admins\Views\Luongs\Edit.cshtml" />
     <Content Include="Areas\Admins\Views\Luongs\Index.cshtml" />
     <Content Include="Areas\NVClient\Views\LuongsNV\Index.cshtml" />
+    <Content Include="Areas\Admins\Views\NhanVienThucTaps\Create.cshtml" />
+    <Content Include="Areas\Admins\Views\NhanVienThucTaps\Delete.cshtml" />
+    <Content Include="Areas\Admins\Views\NhanVienThucTaps\Details.cshtml" />
+    <Content Include="Areas\Admins\Views\NhanVienThucTaps\Edit.cshtml" />
+    <Content Include="Areas\Admins\Views\NhanVienThucTaps\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -330,6 +349,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202112040633006_add Column TamUng Luong.resx">
       <DependentUpon>202112040633006_add Column TamUng Luong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112050300151_5.resx">
+      <DependentUpon>202112050300151_5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112051303432_add Column KinhNghiem.resx">
+      <DependentUpon>202112051303432_add Column KinhNghiem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112051316440_Table-NVTT.resx">
+      <DependentUpon>202112051316440_Table-NVTT.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

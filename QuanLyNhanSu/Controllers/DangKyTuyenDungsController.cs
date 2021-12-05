@@ -46,7 +46,7 @@ namespace QuanLyNhanSu.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Name,SDT,GioiTinh,NgaySinh,TrinhDoHocVan,DiaChi,Gmail,ViTriUngTuyen")] DangKyTuyenDung dangKyTuyenDung)
+        public ActionResult Create([Bind(Include = "ID,Name,SDT,GioiTinh,NgaySinh,TrinhDoHocVan,DiaChi,Gmail,ViTriUngTuyen,KinhNghiem")] DangKyTuyenDung dangKyTuyenDung)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace QuanLyNhanSu.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Name,SDT,GioiTinh,NgaySinh,TrinhDoHocVan,DiaChi,Gmail,ViTriUngTuyen")] DangKyTuyenDung dangKyTuyenDung)
+        public ActionResult Edit([Bind(Include = "ID,Name,SDT,GioiTinh,NgaySinh,TrinhDoHocVan,DiaChi,Gmail,ViTriUngTuyen,KinhNghiem")] DangKyTuyenDung dangKyTuyenDung)
         {
             if (ModelState.IsValid)
             {

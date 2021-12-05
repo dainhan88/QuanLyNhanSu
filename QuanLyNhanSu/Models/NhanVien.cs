@@ -53,6 +53,11 @@ namespace QuanLyNhanSu.Models
 
         [Display(Name = "Phòng Ban")]
         public string MaPhongBan { get; set; }
+        [Display(Name = "Ngày Vào")]
+        [DataType(DataType.Date)]
+        [Required(ErrorMessage = "Ngày vào Nhân Viên không được để trống !!!")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime NgayVao { get; set; }
         [ForeignKey("MaPhongBan")]
         public virtual PhongBan PhongBans { get; set; }
         public ICollection<Luong> Luongs { get; set; }    

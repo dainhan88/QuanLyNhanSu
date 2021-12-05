@@ -97,7 +97,7 @@ namespace QuanLyNhanSu.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IDNhanVien,NameNhanVien,NgaySinhNV,SDTNhanVienName,GioiTinhNhanVien,DiaChiNhanVien,CCCDNhanVien,NhanVienImgName,MaChucVu,MaPhongBan,Note")] NVQuanLy nVQuanLy)
+        public ActionResult Edit([Bind(Include = "IDNhanVien,NameNhanVien,NgaySinhNV,SDTNhanVienName,GioiTinhNhanVien,DiaChiNhanVien,CCCDNhanVien,NhanVienImgName,MaChucVu,MaPhongBan,NgayVao,Note")] NVQuanLy nVQuanLy)
         {
             if (ModelState.IsValid)
             {

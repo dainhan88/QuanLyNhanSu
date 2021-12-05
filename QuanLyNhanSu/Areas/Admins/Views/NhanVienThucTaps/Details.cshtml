@@ -1,23 +1,16 @@
-﻿@model QuanLyNhanSu.Models.NhanVien
+﻿@model QuanLyNhanSu.Models.NhanVienThucTap
 
 @{
     ViewBag.Title = "Details";
     Layout = "~/Areas/Admins/Views/Shared/_LayoutADM.cshtml";
 }
 
-<h2 style="text-align:center">Thông tin chi tiết</h2>
+<h2>Details</h2>
 
 <div>
-    
+    <h4>NhanVienThucTap</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            Mã Nhân Viên
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.IDNhanVien)
-        </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.ChucVus.TenChucVu)
         </dt>
@@ -81,6 +74,9 @@
         <dd>
             @Html.DisplayFor(model => model.CCCDNhanVien)
         </dd>
+
+
+
         <dt>
             @Html.DisplayNameFor(model => model.NgayVao)
         </dt>
@@ -88,16 +84,18 @@
         <dd>
             @Html.DisplayFor(model => model.NgayVao)
         </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ThoiGianThucTap)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ThoiGianThucTap)
+        </dd>
+
     </dl>
 </div>
-
-            <style>
-                
-                dd {
-                    color:red;
-  
-                }
-                dt,dd{
-                    text-align:center;
-                }
-            </style>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IDNhanVien }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

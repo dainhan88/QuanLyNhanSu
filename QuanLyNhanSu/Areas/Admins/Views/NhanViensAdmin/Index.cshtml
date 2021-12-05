@@ -25,7 +25,7 @@
     }
 </div>
 <table class="table">
-    <tr>
+    <tr class="label-NVADM">
         <th>
             @Html.DisplayNameFor(model => model.NameNhanVien)
         </th>
@@ -35,15 +35,13 @@
         <th>
             @Html.DisplayNameFor(model => model.PhongBans.TenPhongBan)
         </th>
-
-
         <th>
             @Html.DisplayNameFor(model => model.GioiTinhNhanVien)
         </th>
         <th>
             <label>Ảnh Chân Dung</label>
         </th>
-        <th>
+        <th style="width:250px;">
             Hỗ Trợ
         </th>
     </tr>
@@ -68,13 +66,27 @@
             <td>
                 <img src="@item.NhanVienImgName" width="150" />
             </td>
-            <td>
-                @Html.ActionLink("Sửa", "Edit", new { id = item.IDNhanVien }) |
-                @Html.ActionLink("Chi Tiết", "Details", new { id = item.IDNhanVien }) |
-                @Html.ActionLink("Xóa", "Delete", new { id = item.IDNhanVien })
+            <td style="text-align: center;">
+
+
+
+                <a href="~/Admins/NhanViensAdmin/Edit/@item.IDNhanVien" class="btn-primary btn">Sửa</a> |
+                <a href="~/Admins/NhanViensAdmin/Details/@item.IDNhanVien" class="btn-primary btn">Chi Tiết</a> |
+                <a href="~/Admins/NhanViensAdmin/Delete/@item.IDNhanVien" class="btn-primary btn">Xóa</a>
             </td>
 
         </tr>
     }
 
 </table>
+<style>
+    .label-NVADM {
+        background-color: #259351;
+        color: white;
+        font-weight: 600;
+    }
+    table, th, td {
+        text-align:center;
+        border: 1px solid black;
+    }
+</style>
