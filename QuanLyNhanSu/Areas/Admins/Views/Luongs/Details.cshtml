@@ -53,6 +53,9 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Chỉnh Sửa", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Quay Lại", "Index")
+    <td>
+        <a href="~/Admins/Luongs/Edit/@item.ID" class="btn-success btn">Sửa</a> |
+
+        <a href="~/Admins/Luongs/Index" class="btn-primary btn">Quay Lại</a>
+    </td>
 </p>

@@ -8,17 +8,17 @@
 <h2 style="text-align:center">Phân Quyền Tài Khoản</h2>
 
 <p>
-    @Html.ActionLink("Thêm Mới Nhóm Đối Tượng", "Create")
+    <a href="/Roles/Create" class="btn-primary btn">Thêm Mới</a>
 </p>
 <table class="table">
-    <tr>
+    <tr class="label-PQ">
         <th>
             @Html.DisplayNameFor(model => model.RoleID)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.RoleName)
         </th>
-        <th>
+        <th style="width:300px;">
              Hỗ Trợ
         </th>
     </tr>
@@ -32,11 +32,23 @@
         @Html.DisplayFor(modelItem => item.RoleName)
     </td>
     <td>
-        @Html.ActionLink("Chỉnh Sửa", "Edit", new { id = item.RoleID }) |
-        @Html.ActionLink("Chi Tiết", "Details", new { id = item.RoleID }) |
-        @Html.ActionLink("Xóa", "Delete", new { id = item.RoleID })
+        <a href="/Roles/Edit/@item.RoleID" class="btn-success btn">Sửa</a> |
+        <a href="/Roles/Details/@item.RoleID" class="btn-primary btn">Chi tiết</a> |
+        <a href="/Roles/Delete/@item.RoleID" class="btn-danger btn">Xóa</a>
     </td>
 </tr>
 }
 
 </table>
+<style>
+    .label-PQ {
+        background-color: rgb(50 112 181);
+        color: white;
+        font-weight: 600;
+    }
+
+    table, th, td {
+        border: 1px solid black;
+        text-align: center;
+    }
+</style>

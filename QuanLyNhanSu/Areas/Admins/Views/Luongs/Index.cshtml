@@ -7,9 +7,9 @@
 
 <h2>Chi Tiết Lương</h2>
 
-<p>
-    @Html.ActionLink("Cập Nhật Lương", "Create")
-</p>
+<div>
+    <a href="~/Admins/Luongs/Create" class="btn-danger btn">Cập Nhật Lương</a>
+</div>
 @*@using (Html.BeginForm("Upfile", "Luongs", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         <input type="file" name="file" />
@@ -25,8 +25,8 @@
                 <div class="form-group d-flex">
                     <label style="color:blue" class="control-label">Tìm Kiếm:</label>
                     <input class="form-control" name="searchString" placeholder="Nhập Mã Nhân Vên" />
-                </div>
-                <input type="submit" value="Tìm kiếm" class="btn btn-primary" />
+                    <input type="submit" value="Tìm kiếm" class="btn btn-primary" />
+                </div>               
             </p>
         }
     </div>
@@ -34,11 +34,13 @@
     {
         <div>
             @Html.TextBox("file", "", new { type = "file" }) <br />
+
             <input type="submit" value="Cập Nhật Lương" class="btn btn-danger" />
         </div>
     }
 
 </div>
+<br />
 
 
 
@@ -103,12 +105,12 @@
                 @string.Format("{0:#,##0}", item.TamUng)
             </td>
             <td>
-                @string.Format("{0:#,##0}", @total)
+                @string.Format("{0:#,##0}", @total) 
             </td>
             <td>
-                <a href="~/Admins/Luongs/Edit/@item.ID" class="btn-primary btn">Sửa</a> |
+                <a href="~/Admins/Luongs/Edit/@item.ID" class="btn-success btn">Sửa</a> |
 
-                <a href="~/Admins/Luongs/Delete/@item.ID" class="btn-primary btn">Xóa</a>
+                <a href="~/Admins/Luongs/Delete/@item.ID" class="btn-danger btn">Xóa</a>
             </td>
         </tr>
     }
@@ -116,7 +118,7 @@
 </table>
 <style>
     .label-Luong {
-        background-color: #259351;
+        background-color: rgb(50 112 181);
         color: white;
         font-weight: 600;
     }

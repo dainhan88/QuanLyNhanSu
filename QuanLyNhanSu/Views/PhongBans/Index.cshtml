@@ -8,10 +8,10 @@
 <h2 style="text-align:center">Danh Sách Phòng Ban</h2>
 
 <p>
-    @Html.ActionLink("Thêm Mới", "Create")
+    <a href="/PhongBans/Create" class="btn-danger btn"> Thêm Mới </a>
 </p>
 <table class="table">
-    <tr>
+    <tr class="label-PB">
         <th>
             @Html.DisplayNameFor(model => model.TenPhongBan)
         </th>
@@ -24,7 +24,7 @@
         <th>
             Hỗ Trợ
         </th>
-        <th></th>
+
     </tr>
 
 @foreach (var item in Model) {
@@ -39,11 +39,24 @@
             @Html.DisplayFor(modelItem => item.SdtPhongBan)
         </td>
         <td>
-            @Html.ActionLink("Sửa", "Edit", new { id=item.MaPhongBan }) |
-            @Html.ActionLink("Chi Tiết", "Details", new { id=item.MaPhongBan }) |
-            @Html.ActionLink("Xóa", "Delete", new { id=item.MaPhongBan })
+            <a href="/PhongBans/Edit/@item.MaPhongBan" class="btn-success btn">Sửa</a> |
+            <a href="/PhongBans/Details/@item.MaPhongBan" class="btn-primary btn">Chi tiết</a> |
+            <a href="/PhongBans/Delete/@item.MaPhongBan" class="btn-danger btn">Xóa</a>
         </td>
     </tr>
 }
 
 </table>
+
+<style>
+    .label-PB {
+        background-color: rgb(50 112 181);
+        color: white;
+        font-weight: 600;
+    }
+
+    table, th, td {
+        border: 1px solid black;
+        text-align: center;
+    }
+</style>

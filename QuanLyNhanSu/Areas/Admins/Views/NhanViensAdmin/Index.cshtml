@@ -8,7 +8,7 @@
 <h2 style="text-align:center">Danh Sách Nhân Viên</h2>
 
 <p>
-    @Html.ActionLink("Thêm Mới Nhân Viên", "Create")
+    <a href="~/Admins/NhanViensAdmin/Create" class="btn-danger btn">Thêm Nhân Viên</a>
 </p>
 
 <br />
@@ -70,9 +70,9 @@
 
 
 
-                <a href="~/Admins/NhanViensAdmin/Edit/@item.IDNhanVien" class="btn-primary btn">Sửa</a> |
+                <a href="~/Admins/NhanViensAdmin/Edit/@item.IDNhanVien" class="btn-success btn">Sửa</a> |
                 <a href="~/Admins/NhanViensAdmin/Details/@item.IDNhanVien" class="btn-primary btn">Chi Tiết</a> |
-                <a href="~/Admins/NhanViensAdmin/Delete/@item.IDNhanVien" class="btn-primary btn">Xóa</a>
+                <a href="~/Admins/NhanViensAdmin/Delete/@item.IDNhanVien" class="btn-danger btn">Xóa</a>
             </td>
 
         </tr>
@@ -81,7 +81,7 @@
 </table>
 <style>
     .label-NVADM {
-        background-color: #259351;
+        background-color: rgb(50 112 181);
         color: white;
         font-weight: 600;
     }

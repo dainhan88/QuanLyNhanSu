@@ -20,7 +20,7 @@
     }
 </div>
 <table class="table">
-    <tr>
+    <tr class="label-Luongs">
         <th>Mã Nhân Viên</th>
         <th>
             @Html.DisplayNameFor(model => model.NhanViens.NameNhanVien)
@@ -46,47 +46,57 @@
         <th>
             Tổng Lương
         </th>
-        <th></th>
     </tr>
 
     @foreach (var item in Model)
     {
         double total = Convert.ToDouble(item.NgayCong * item.LuongNgay - item.TamUng);
-<tr>
+        <tr>
 
-    <td>
-        @Html.DisplayFor(modelItem => item.NhanViens.IDNhanVien)
-    </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NhanViens.IDNhanVien)
+            </td>
 
-    <td>
-        @Html.DisplayFor(modelItem => item.NhanViens.NameNhanVien)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.NhanViens.NgaySinhNV)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.NhanViens.SDTNhanVienName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Thang)
-    </td>
-    <td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NhanViens.NameNhanVien)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NhanViens.NgaySinhNV)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NhanViens.SDTNhanVienName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Thang)
+            </td>
+            <td>
 
-        @string.Format("{0:#,##0}", item.LuongNgay)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.NgayCong)
-    </td>
-    <td>
+                @string.Format("{0:#,##0}", item.LuongNgay)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayCong)
+            </td>
+            <td>
 
-        @string.Format("{0:#,##0}", item.TamUng)
-    </td>
-    <td>
-        @string.Format("{0:#,##0}", @total)
-    </td>
-    <td>
-    </td>
-</tr>
+                @string.Format("{0:#,##0}", item.TamUng)
+            </td>
+            <td>
+                @string.Format("{0:#,##0}", @total)
+            </td>
+        </tr>
     }
 
 </table>
+<style>
+    .label-Luongs {
+        background-color: #259351;
+        color: white;
+        font-weight: 600;
+    }
+
+    table, th, td {
+        border: 1px solid black;
+        text-align: center;
+    }
+</style>
+  

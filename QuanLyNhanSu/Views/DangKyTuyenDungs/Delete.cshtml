@@ -5,11 +5,11 @@
     Layout = "~/Areas/Admins/Views/Shared/_LayoutADM.cshtml";
 }
 
-<h2>Delete</h2>
+<h2>Xóa</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Bạn chắc chắn muốn xóa thành viên đăng ký dưới đây không ??</h3>
 <div>
-    <h4>DangKyTuyenDung</h4>
+    <h4>Danh Sách Đăng Ký</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -83,7 +83,7 @@
 
         <div class="form-actions no-color">
             <input type="submit" value="Delete" class="btn btn-danger" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <a href="/DangKyTuyenDungs/Index" class="btn-primary btn"> Quay Lại</a>
         </div>
     }
 </div>

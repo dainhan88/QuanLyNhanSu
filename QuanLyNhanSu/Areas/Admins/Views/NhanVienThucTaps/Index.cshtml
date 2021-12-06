@@ -7,9 +7,9 @@
 
 <h2>Danh Sách Nhân Viên Thực Tập</h2>
 
-<p>
-    @Html.ActionLink("Thêm Mới", "Create")
-</p>
+<div>
+    <a href="~/Admins/NhanVienThucTaps/Create" class="btn-danger btn">Thêm Mới</a>
+</div>
 <br />
 <div class="searchString">
     @using (Html.BeginForm())
@@ -24,7 +24,7 @@
     }
 </div>
 <table class="table">
-    <tr>
+    <tr class="label-NVTT">
         <th>
             @Html.DisplayNameFor(model => model.ChucVus.TenChucVu)
         </th>
@@ -49,7 +49,9 @@
         <th>
             Thời Gian Thực Tập
         </th>
-        <th></th>
+        <th>
+            Hỗ Trợ
+        </th>
     </tr>
 
 @foreach (var item in Model) {
@@ -79,11 +81,23 @@
             @Html.DisplayFor(modelItem => item.ThoiGianThucTap)
         </td>
         <td>
-            @Html.ActionLink("Sửa", "Edit", new { id=item.IDNhanVien }) |
-            @Html.ActionLink("Chi Tiết", "Details", new { id=item.IDNhanVien }) |
-            @Html.ActionLink("Xóa", "Delete", new { id=item.IDNhanVien })
+            <a href="~/Admins/NhanVienThucTaps/Edit/@item.IDNhanVien" class="btn-success btn">Sửa</a> |
+            <a href="~/Admins/NhanVienThucTaps/Details/@item.IDNhanVien" class="btn-primary btn">Chi Tiết</a> |
+            <a href="~/Admins/NhanVienThucTaps/Delete/@item.IDNhanVien" class="btn-danger btn">Xóa</a>
         </td>
     </tr>
 }
 
 </table>
+<style>
+    .label-NVTT {
+        background-color: rgb(50 112 181);
+        color: white;
+        font-weight: 600;
+    }
+
+    table, th, td {
+        border: 1px solid black;
+        text-align: center;
+    }
+</style>

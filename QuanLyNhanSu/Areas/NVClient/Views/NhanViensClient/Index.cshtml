@@ -9,18 +9,18 @@
 <div class="searchString">
     @using (Html.BeginForm())
     {
-    <p>
-        <div class="form-group d-flex">
-            <label style="color:blue" class="control-label">Tìm Kiếm:</label>
-            <input class="form-control" name="searchString" placeholder="Nhập Tên Nhân Vên" />
-        </div>
-         <input type="submit" value="Tìm kiếm" class="btn btn-primary" />
-    </p>
+        <p>
+            <div class="form-group d-flex">
+                <label style="color:blue" class="control-label">Tìm Kiếm:</label>
+                <input class="form-control" name="searchString" placeholder="Nhập Tên Nhân Vên" />
+            </div>
+            <input type="submit" value="Tìm kiếm" class="btn btn-primary" />
+        </p>
     }
 </div>
 
 <table class="table">
-    <tr>
+    <tr class="label-NV">
         <th>
             @Html.DisplayNameFor(model => model.NameNhanVien)
         </th>
@@ -37,33 +37,48 @@
         <th>
             <label>Ảnh Chân Dung</label>
         </th>
-        <th></th>
+        <th>
+            Hỗ Trợ
+        </th>
     </tr>
 
-@foreach (var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.NameNhanVien)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.ChucVus.TenChucVu)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.PhongBans.TenPhongBan)
-    </td>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameNhanVien)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChucVus.TenChucVu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhongBans.TenPhongBan)
+            </td>
 
-    <td>
-        @Html.DisplayFor(modelItem => item.GioiTinhNhanVien)
-    </td>
-    <td>
-        <img src="@item.NhanVienImgName" width="150" />
-    </td>
-    <td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GioiTinhNhanVien)
+            </td>
+            <td>
+                <img src="@item.NhanVienImgName" width="150" />
+            </td>
+            <td>
 
-        @Html.ActionLink("Thông Tin Chi Tiết", "Details", new { id = item.IDNhanVien })
+                <a href="~/NVClient/NhanViensClient/Details/@item.IDNhanVien" class="btn-primary btn">Chi Tiết</a> 
 
-    </td>
-</tr>
-}
+            </td>
+        </tr>
+    }
 
 </table>
+<style>
+    .label-NV {
+        background-color: #259351;
+        color: white;
+        font-weight: 600;
+    }
+
+    table, th, td {
+        border: 1px solid black;
+        text-align: center;
+    }
+</style>

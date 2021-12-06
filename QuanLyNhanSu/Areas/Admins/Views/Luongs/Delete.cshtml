@@ -11,7 +11,14 @@
 <div>
     <h4>Chi Tiết Lương</h4>
     <hr />
-    <dl class="dl-horizontal">
+    <dl style="font-size:large;" class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NhanViens.IDNhanVien)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NhanViens.IDNhanVien)
+        </dd>
         <dt>
             @Html.DisplayNameFor(model => model.NhanViens.NameNhanVien)
         </dt>
@@ -20,38 +27,18 @@
             @Html.DisplayFor(model => model.NhanViens.NameNhanVien)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Thang)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Thang)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LuongNgay)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LuongNgay)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.NgayCong)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NgayCong)
-        </dd>
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Xóa" class="btn btn-danger" /> |
-            @Html.ActionLink("Quay Lại", "Index")
-        </div>
+    <div style="display:flex;" class="form-actions no-color">
+    <input type="submit" value="Xóa" class="btn btn-danger" />  | 
+    <a href="~/Admins/Luongs/Index" class="btn-primary btn">Quay Lại</a> 
+    </div>
+             
     }
 </div>

@@ -5,7 +5,7 @@
     Layout = "~/Areas/Admins/Views/Shared/_LayoutADM.cshtml";
 }
 
-<h2>Delete</h2>
+<h2>Xóa</h2>
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
@@ -25,9 +25,9 @@
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-danger" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
+<div class="form-actions no-color">
+    <input type="submit" value="Delete" class="btn btn-danger" /> |
+    <a href="/Roles/Index" class="btn-primary btn">Quay Lại</a>
+</div>
     }
 </div>

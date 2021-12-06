@@ -8,7 +8,7 @@
 <h2>Nhân Viên Quản Lý</h2>
 
 <p>
-    @Html.ActionLink("Thêm Mới", "Create")
+    <a href="/NVQuanLies/Create" class="btn-danger btn">Thêm Mới</a>
 </p>
 <div class="searchString">
     @using (Html.BeginForm())
@@ -23,7 +23,7 @@
     }
 </div>
 <table class="table">
-    <tr>
+    <tr class="label-NVQL">
         <th>
             @Html.DisplayNameFor(model => model.ChucVus.TenChucVu)
         </th>
@@ -45,9 +45,11 @@
            Ảnh Chân Dung
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Note)
+           Ghi Chú
         </th>
-        <th></th>
+        <th>
+            Hỗ Trợ
+        </th>
     </tr>
 
 @foreach (var item in Model) {
@@ -77,11 +79,23 @@
         @Html.DisplayFor(modelItem => item.Note)
     </td>
     <td>
-        @Html.ActionLink("Chỉnh Sửa", "Edit", new { id = item.IDNhanVien }) |
-        @Html.ActionLink("Chi Tiết", "Details", new { id = item.IDNhanVien }) |
-        @Html.ActionLink("Xóa", "Delete", new { id = item.IDNhanVien })
+        <a href="/NVQuanLies/Edit/@item.IDNhanVien" class="btn-success btn">Sửa</a> |
+        <a href="/NVQuanLies/Details/@item.IDNhanVien" class="btn-primary btn">Chi tiết</a> |
+        <a href="/NVQuanLies/Delete/@item.IDNhanVien" class="btn-danger btn">Xóa</a>
     </td>
 </tr>
 }
 
 </table>
+<style>
+    .label-NVQL {
+        background-color: rgb(50 112 181);
+        color: white;
+        font-weight: 600;
+    }
+
+    table, th, td {
+        border: 1px solid black;
+        text-align: center;
+    }
+</style>
