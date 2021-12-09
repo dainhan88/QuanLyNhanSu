@@ -30,8 +30,7 @@ namespace QuanLyNhanSu.Areas.Admins.Controllers
             var luongs = db.luongs.Include(l => l.NhanViens);
             return View(links);
         }
-        [HttpPost]
-
+        [HttpPost]    
         public ActionResult Index(HttpPostedFileBase file)
         {
             DataTable dt = CopyDataFromExcelFile(file);
@@ -63,6 +62,7 @@ namespace QuanLyNhanSu.Areas.Admins.Controllers
         }
 
         // GET: Admins/Luongs/Details/5
+
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -77,7 +77,8 @@ namespace QuanLyNhanSu.Areas.Admins.Controllers
             return View(luong);
         }
 
-        // GET: Admins/Luongs/Create
+        // GET: Admins/Luongs/Create\
+
         public ActionResult Create()
         {
             ViewBag.IDNhanVien = new SelectList(db.NhanViens, "IDNhanVien", "IDNhanVien");

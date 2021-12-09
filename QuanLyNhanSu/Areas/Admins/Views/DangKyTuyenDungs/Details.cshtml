@@ -1,0 +1,89 @@
+﻿@model QuanLyNhanSu.Models.DangKyTuyenDung
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admins/Views/Shared/_LayoutADM.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DangKyTuyenDung</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SDT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SDT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GioiTinh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GioiTinh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgaySinh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgaySinh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TrinhDoHocVan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrinhDoHocVan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DiaChi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiaChi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ViTriUngTuyen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ViTriUngTuyen)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.KinhNghiem)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KinhNghiem)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <a href="/DangKyTuyenDungs/Index" class="btn-primary btn" > Quay Lại</a>
+</p>

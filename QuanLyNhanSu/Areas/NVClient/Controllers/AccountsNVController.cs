@@ -1,16 +1,17 @@
-﻿using System;
+﻿using QuanLyNhanSu.Models;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
-using QuanLyNhanSu.Models;
 
-namespace QuanLyNhanSu.Controllers
+namespace QuanLyNhanSu.Areas.NVClient.Controllers
 {
-    public class AccountsController : Controller
+    public class AccountsNVController : Controller
     {
+        // GET: Admins/AccountsADM
         QuanLyNhanSuDbContext db = new QuanLyNhanSuDbContext();
         Encrytion enc = new Encrytion();
         StringProcess strPro = new StringProcess();
@@ -29,7 +30,6 @@ namespace QuanLyNhanSu.Controllers
 
             {
                 return RedirectToAction("Index", "HomeNV", new { Area = "NVClient" });
-
 
             }
             ViewBag.ReturnUrl = returnUrl;
@@ -89,11 +89,11 @@ namespace QuanLyNhanSu.Controllers
                 acc.PassWord = enc.PasswordEncrytion(acc.PassWord);
                 db.Accounts.Add(acc);
                 db.SaveChanges();
-                return RedirectToAction("Login", "Accounts");
+                return RedirectToAction("Login", "AccountsNV");
             }
             return View(acc);
         }
-        
+
 
         public ActionResult Logout()
         {
@@ -148,43 +148,15 @@ namespace QuanLyNhanSu.Controllers
             return 0;
         }
 
-        public ActionResult Change_password(string id)
+       
+        public ActionResult Change_password_NV(string id)
         {
             Account acc = db.Accounts.Find(id);
             return View(acc);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Change_password(Account acc, FormCollection form)
-        {
-
-
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    acc.PassWord = enc.PasswordEncrytion(form["PassWord"]);                   
-                    db.Entry(acc).State = EntityState.Modified;
-                    db.SaveChanges();
-                    return RedirectToAction("Index", "Home");
-                }
-                catch
-                {
-                    ModelState.AddModelError("", "Xác nhận mật khẩu không chính xác!!");
-                }
-            }
-            ModelState.AddModelError("", "Xác nhận mật khẩu không chính xác!!");
-            return View(acc);
-        }
-        public ActionResult Change_password_ADM(string id)
-        {
-            Account acc = db.Accounts.Find(id);
-            return View(acc);
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Change_password_ADM(Account acc, FormCollection form)
+        public ActionResult Change_password_NV(Account acc, FormCollection form)
         {
 
 
@@ -196,7 +168,7 @@ namespace QuanLyNhanSu.Controllers
                     acc.PassWord = enc.PasswordEncrytion(form["PassWord"]);
                     db.Entry(acc).State = EntityState.Modified;
                     db.SaveChanges();
-                    return RedirectToAction("Index", "Home", new { Area = "Admins" });
+                    return RedirectToAction("Index", "HomeNV", new { Area = "NVClient" });
                 }
                 catch
                 {

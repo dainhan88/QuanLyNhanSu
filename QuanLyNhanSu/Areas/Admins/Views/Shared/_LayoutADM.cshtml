@@ -30,34 +30,28 @@
                         <a href="/Admins/Luongs/Index" class="nav-link">Lương Nhân Viên</a>
                     </li>
                     <li>
-                        <a href="/NVQuanLies/Index" class="nav-link">Danh Sách Quản Lý</a>
+                        <a href="/Admins/NVQuanLies/Index" class="nav-link">Nhân Viên Quản Lý</a>
                     </li>
                     <li>
                         <a href="/Admins/NhanVienThucTaps/Index" class="nav-link">Nhân Viên Thực Tập</a>
                     </li>
                     <li>
-                        <a href="/PhongBans/Index" class="nav-link">Phòng Ban</a>
+                        <a href="/Admins/PhongBans/Index" class="nav-link">Phòng Ban</a>
                     </li>
                     <li>
-                        <a href="/ChucVus/Index" class="nav-link">Chức Vụ</a>
+                        <a href="/Admins/ChucVus/Index" class="nav-link">Chức Vụ</a>
                     </li>
 
                     <li>
-                        <a href="/Roles/Index" class="nav-link">Phân Quyền</a>
+                        <a href="/Admins/Roles/Index" class="nav-link">Phân Quyền</a>
                     </li>
                     <li>
-                        <a href="/DangKyTuyenDungs/Index" class="nav-link">Đăng Ký Tuyển Dụng</a>
+                        <a href="/Admins/DangKyTuyenDungs/Index" class="nav-link">Đăng Ký Tuyển Dụng</a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav">
-                    <li>
-                        <a href="/Accounts/Register" style="color:red;" class="nav-link">ĐĂNG KÝ</a>
-                    </li>
-                    <li>
-                        <a href="/Accounts/Logout"style="color:red;" class="nav-link">ĐĂNG XUẤT</a>
-                    </li>
-                    </ul>
-                    
+                    @Html.Partial("_LoginPatialADM")
+                </ul>
             </div>
         </div>
     </div>

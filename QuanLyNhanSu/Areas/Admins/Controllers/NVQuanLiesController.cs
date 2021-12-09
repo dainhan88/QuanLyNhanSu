@@ -9,7 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using QuanLyNhanSu.Models;
 
-namespace QuanLyNhanSu.Controllers
+namespace QuanLyNhanSu.Areas.Admins.Controllers
 {
     public class NVQuanLiesController : Controller
     {

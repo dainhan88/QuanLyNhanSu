@@ -8,109 +8,109 @@ using System.Web;
 using System.Web.Mvc;
 using QuanLyNhanSu.Models;
 
-namespace QuanLyNhanSu.Controllers
+namespace QuanLyNhanSu.Areas.Admins.Controllers
 {
-    public class DangKyTuyenDungsController : Controller
+    public class PhongBansController : Controller
     {
         private QuanLyNhanSuDbContext db = new QuanLyNhanSuDbContext();
 
-        // GET: DangKyTuyenDungs
+        // GET: PhongBans
         public ActionResult Index()
         {
-            return View(db.DangKyTuyenDungs.ToList());
+            return View(db.PhongBans.ToList());
         }
 
-        // GET: DangKyTuyenDungs/Details/5
-        public ActionResult Details(int? id)
+        // GET: PhongBans/Details/5
+        public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DangKyTuyenDung dangKyTuyenDung = db.DangKyTuyenDungs.Find(id);
-            if (dangKyTuyenDung == null)
+            PhongBan phongBan = db.PhongBans.Find(id);
+            if (phongBan == null)
             {
                 return HttpNotFound();
             }
-            return View(dangKyTuyenDung);
+            return View(phongBan);
         }
 
-        // GET: DangKyTuyenDungs/Create
+        // GET: PhongBans/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: DangKyTuyenDungs/Create
+        // POST: PhongBans/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Name,SDT,GioiTinh,NgaySinh,TrinhDoHocVan,DiaChi,Gmail,ViTriUngTuyen,KinhNghiem")] DangKyTuyenDung dangKyTuyenDung)
+        public ActionResult Create([Bind(Include = "MaPhongBan,TenPhongBan,DiaChiPhongBan,SdtPhongBan")] PhongBan phongBan)
         {
             if (ModelState.IsValid)
             {
-                db.DangKyTuyenDungs.Add(dangKyTuyenDung);
-                db.SaveChanges();
-                return RedirectToAction("Index","ThanhCong");
-            }
-
-            return View(dangKyTuyenDung);
-        }
-
-        // GET: DangKyTuyenDungs/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            DangKyTuyenDung dangKyTuyenDung = db.DangKyTuyenDungs.Find(id);
-            if (dangKyTuyenDung == null)
-            {
-                return HttpNotFound();
-            }
-            return View(dangKyTuyenDung);
-        }
-
-        // POST: DangKyTuyenDungs/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Name,SDT,GioiTinh,NgaySinh,TrinhDoHocVan,DiaChi,Gmail,ViTriUngTuyen,KinhNghiem")] DangKyTuyenDung dangKyTuyenDung)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(dangKyTuyenDung).State = EntityState.Modified;
+                db.PhongBans.Add(phongBan);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(dangKyTuyenDung);
+
+            return View(phongBan);
         }
 
-        // GET: DangKyTuyenDungs/Delete/5
-        public ActionResult Delete(int? id)
+        // GET: PhongBans/Edit/5
+        public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DangKyTuyenDung dangKyTuyenDung = db.DangKyTuyenDungs.Find(id);
-            if (dangKyTuyenDung == null)
+            PhongBan phongBan = db.PhongBans.Find(id);
+            if (phongBan == null)
             {
                 return HttpNotFound();
             }
-            return View(dangKyTuyenDung);
+            return View(phongBan);
         }
 
-        // POST: DangKyTuyenDungs/Delete/5
+        // POST: PhongBans/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "MaPhongBan,TenPhongBan,DiaChiPhongBan,SdtPhongBan")] PhongBan phongBan)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(phongBan).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(phongBan);
+        }
+
+        // GET: PhongBans/Delete/5
+        public ActionResult Delete(string id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            PhongBan phongBan = db.PhongBans.Find(id);
+            if (phongBan == null)
+            {
+                return HttpNotFound();
+            }
+            return View(phongBan);
+        }
+
+        // POST: PhongBans/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(string id)
         {
-            DangKyTuyenDung dangKyTuyenDung = db.DangKyTuyenDungs.Find(id);
-            db.DangKyTuyenDungs.Remove(dangKyTuyenDung);
+            PhongBan phongBan = db.PhongBans.Find(id);
+            db.PhongBans.Remove(phongBan);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

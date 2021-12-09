@@ -15,7 +15,7 @@ namespace QuanLyNhanSu.Areas.NVClient.Controllers
         private QuanLyNhanSuDbContext db = new QuanLyNhanSuDbContext();
 
         // GET: NVClient/LuongsNV
-        public ActionResult Index( string searchString)
+        public ActionResult Index(string searchString)
         {
             var links = from l in db.luongs // lấy toàn bộ liên kết
                         select l;

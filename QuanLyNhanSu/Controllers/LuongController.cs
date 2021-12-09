@@ -13,15 +13,22 @@ using QuanLyNhanSu.Models;
 
 namespace QuanLyNhanSu.Controllers
 {
-    public class LuongsController : Controller
+    [Authorize]
+    public class LuongController : Controller
     {
         private QuanLyNhanSuDbContext db = new QuanLyNhanSuDbContext();
         // GET: Luongs
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
+            var links = from l in db.luongs // lấy toàn bộ liên kết
+                        select l;
+            if (!String.IsNullOrEmpty(searchString)) // kiểm tra chuỗi tìm kiếm có rỗng/null hay không
+            {
+                links = links.Where(s => s.NhanViens.NameNhanVien.Contains(searchString)); //lọc theo chuỗi tìm kiếm                
+            }
             var luongs = db.luongs.Include(l => l.NhanViens);
-            return View(luongs.ToList());
-        }     
+            return View(links);
+        }
         // GET: Luongs/Details/5
         public ActionResult Details(int? id)
         {

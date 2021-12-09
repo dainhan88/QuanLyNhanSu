@@ -2,16 +2,10 @@
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Areas/Admins/Views/Shared/_LayoutADM.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2 style="text-align:center">Danh Sách Nhân Viên</h2>
-
-<p>
-    <a href="~/Admins/NhanViensAdmin/Create" class="btn-danger btn">Thêm Nhân Viên</a>
-</p>
-
-<br />
 <div class="searchString">
     @using (Html.BeginForm())
     {
@@ -24,8 +18,9 @@
         </p>
     }
 </div>
+
 <table class="table">
-    <tr class="label-NVADM">
+    <tr class="label-NV">
         <th>
             @Html.DisplayNameFor(model => model.NameNhanVien)
         </th>
@@ -38,10 +33,11 @@
         <th>
             @Html.DisplayNameFor(model => model.GioiTinhNhanVien)
         </th>
+
         <th>
             <label>Ảnh Chân Dung</label>
         </th>
-        <th style="width:250px;">
+        <th>
             Hỗ Trợ
         </th>
     </tr>
@@ -59,36 +55,32 @@
                 @Html.DisplayFor(modelItem => item.PhongBans.TenPhongBan)
             </td>
 
-
             <td>
                 @Html.DisplayFor(modelItem => item.GioiTinhNhanVien)
             </td>
             <td>
-                <img style=" width: 152px; height: 150px; object-fit: cover;" src="@item.NhanVienImgName" width="150" />
+                <img src="@item.NhanVienImgName" width="150" />
             </td>
-            <td style="text-align: center;">
+            <td>
 
+                <a href="~/NhanViens/Details/@item.IDNhanVien" class="btn-primary btn">Chi Tiết</a>
 
-
-                <a href="~/Admins/NhanViensAdmin/Edit/@item.IDNhanVien" class="btn-success btn">Sửa</a> |
-                <a href="~/Admins/NhanViensAdmin/Details/@item.IDNhanVien" class="btn-primary btn">Chi Tiết</a> |
-                <a href="~/Admins/NhanViensAdmin/Delete/@item.IDNhanVien" class="btn-danger btn">Xóa</a>
             </td>
-
         </tr>
     }
 
 </table>
 <style>
-    .label-NVADM {
-        background-color: rgb(50 112 181);
+    .label-NV {
+        background-color: #259351;
         color: white;
         font-weight: 600;
     }
+
     table, th, td {
-        text-align:center;
         border: 1px solid black;
-
-
+        text-align: center;
     }
 </style>
+
+

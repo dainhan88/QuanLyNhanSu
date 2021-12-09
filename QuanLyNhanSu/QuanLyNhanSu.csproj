@@ -54,6 +54,12 @@
     <Reference Include="EPPlus, Version=5.8.3.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
       <HintPath>..\packages\EPPlus.5.8.3\lib\net45\EPPlus.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.3\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.3\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.IO.RecyclableMemoryStream, Version=1.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.IO.RecyclableMemoryStream.1.4.1\lib\net46\Microsoft.IO.RecyclableMemoryStream.dll</HintPath>
@@ -137,22 +143,25 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admins\AdminsAreaRegistration.cs" />
+    <Compile Include="Areas\Admins\Controllers\AccountsADMController.cs" />
+    <Compile Include="Areas\Admins\Controllers\ChucVusController.cs" />
+    <Compile Include="Areas\Admins\Controllers\DangKyTuyenDungsController.cs" />
     <Compile Include="Areas\Admins\Controllers\HomeAdminController.cs" />
     <Compile Include="Areas\Admins\Controllers\LuongsController.cs" />
     <Compile Include="Areas\Admins\Controllers\NhanViensAdminController.cs" />
     <Compile Include="Areas\Admins\Controllers\NhanVienThucTapsController.cs" />
+    <Compile Include="Areas\Admins\Controllers\NVQuanLiesController.cs" />
+    <Compile Include="Areas\Admins\Controllers\PhongBansController.cs" />
+    <Compile Include="Areas\Admins\Controllers\RolesController.cs" />
+    <Compile Include="Areas\NVClient\Controllers\AccountsNVController.cs" />
     <Compile Include="Areas\NVClient\Controllers\HomeNVController.cs" />
     <Compile Include="Areas\NVClient\Controllers\LuongsNVController.cs" />
     <Compile Include="Areas\NVClient\Controllers\NhanViensClientController.cs" />
     <Compile Include="Areas\NVClient\NVClientAreaRegistration.cs" />
     <Compile Include="Controllers\AccountsController.cs" />
-    <Compile Include="Controllers\ChucVusController.cs" />
-    <Compile Include="Controllers\DangKyTuyenDungsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\LuongsController.cs" />
-    <Compile Include="Controllers\NVQuanLiesController.cs" />
-    <Compile Include="Controllers\PhongBansController.cs" />
-    <Compile Include="Controllers\RolesController.cs" />
+    <Compile Include="Controllers\LuongController.cs" />
+    <Compile Include="Controllers\NhanViensController.cs" />
     <Compile Include="Controllers\ThanhCongController.cs" />
     <Compile Include="Controllers\TuyenDungController.cs" />
     <Compile Include="Global.asax.cs">
@@ -232,11 +241,6 @@
     <Content Include="Areas\Admins\Views\Shared\_LayoutADM.cshtml" />
     <Content Include="Areas\Admins\Views\HomeAdmin\Index.cshtml" />
     <Content Include="Areas\Admins\Views\NhanViensAdmin\Index.cshtml" />
-    <Content Include="Areas\NVClient\Views\web.config" />
-    <Content Include="Areas\NVClient\Views\Shared\_LayoutNVClient.cshtml" />
-    <Content Include="Areas\NVClient\Views\HomeNV\Index.cshtml" />
-    <Content Include="Areas\NVClient\Views\NhanViensClient\Details.cshtml" />
-    <Content Include="Areas\NVClient\Views\NhanViensClient\Index.cshtml" />
     <Content Include="Areas\Admins\Views\NhanViensAdmin\Create.cshtml" />
     <Content Include="Areas\Admins\Views\NhanViensAdmin\Delete.cshtml" />
     <Content Include="Areas\Admins\Views\NhanViensAdmin\Details.cshtml" />
@@ -246,12 +250,47 @@
     <Content Include="Areas\Admins\Views\Luongs\Details.cshtml" />
     <Content Include="Areas\Admins\Views\Luongs\Edit.cshtml" />
     <Content Include="Areas\Admins\Views\Luongs\Index.cshtml" />
-    <Content Include="Areas\NVClient\Views\LuongsNV\Index.cshtml" />
     <Content Include="Areas\Admins\Views\NhanVienThucTaps\Create.cshtml" />
     <Content Include="Areas\Admins\Views\NhanVienThucTaps\Delete.cshtml" />
     <Content Include="Areas\Admins\Views\NhanVienThucTaps\Details.cshtml" />
     <Content Include="Areas\Admins\Views\NhanVienThucTaps\Edit.cshtml" />
     <Content Include="Areas\Admins\Views\NhanVienThucTaps\Index.cshtml" />
+    <Content Include="Areas\Admins\Views\Shared\_LoginPatialADM.cshtml" />
+    <Content Include="Areas\Admins\Views\AccountsADM\Change_password_ADM.cshtml" />
+    <Content Include="Areas\Admins\Views\ChucVus\Create.cshtml" />
+    <Content Include="Areas\Admins\Views\ChucVus\Delete.cshtml" />
+    <Content Include="Areas\Admins\Views\ChucVus\Details.cshtml" />
+    <Content Include="Areas\Admins\Views\ChucVus\Edit.cshtml" />
+    <Content Include="Areas\Admins\Views\ChucVus\Index.cshtml" />
+    <Content Include="Areas\Admins\Views\PhongBans\Create.cshtml" />
+    <Content Include="Areas\Admins\Views\PhongBans\Delete.cshtml" />
+    <Content Include="Areas\Admins\Views\PhongBans\Details.cshtml" />
+    <Content Include="Areas\Admins\Views\PhongBans\Edit.cshtml" />
+    <Content Include="Areas\Admins\Views\PhongBans\Index.cshtml" />
+    <Content Include="Areas\Admins\Views\NVQuanLies\Create.cshtml" />
+    <Content Include="Areas\Admins\Views\NVQuanLies\Delete.cshtml" />
+    <Content Include="Areas\Admins\Views\NVQuanLies\Details.cshtml" />
+    <Content Include="Areas\Admins\Views\NVQuanLies\Edit.cshtml" />
+    <Content Include="Areas\Admins\Views\NVQuanLies\Index.cshtml" />
+    <Content Include="Areas\Admins\Views\Roles\Create.cshtml" />
+    <Content Include="Areas\Admins\Views\Roles\Delete.cshtml" />
+    <Content Include="Areas\Admins\Views\Roles\Details.cshtml" />
+    <Content Include="Areas\Admins\Views\Roles\Edit.cshtml" />
+    <Content Include="Areas\Admins\Views\Roles\Index.cshtml" />
+    <Content Include="Areas\Admins\Views\DangKyTuyenDungs\Create.cshtml" />
+    <Content Include="Areas\Admins\Views\DangKyTuyenDungs\Delete.cshtml" />
+    <Content Include="Areas\Admins\Views\DangKyTuyenDungs\Details.cshtml" />
+    <Content Include="Areas\Admins\Views\DangKyTuyenDungs\Edit.cshtml" />
+    <Content Include="Areas\Admins\Views\DangKyTuyenDungs\Index.cshtml" />
+    <Content Include="Areas\Admins\Views\AccountsADM\Register.cshtml" />
+    <Content Include="Areas\NVClient\Views\web.config" />
+    <Content Include="Areas\NVClient\Views\Shared\_LayoutNVClient.cshtml" />
+    <Content Include="Areas\NVClient\Views\HomeNV\Index.cshtml" />
+    <Content Include="Areas\NVClient\Views\LuongsNV\Index.cshtml" />
+    <Content Include="Areas\NVClient\Views\NhanViensClient\Details.cshtml" />
+    <Content Include="Areas\NVClient\Views\NhanViensClient\Index.cshtml" />
+    <Content Include="Areas\NVClient\Views\Shared\_LoginPatialNV.cshtml" />
+    <Content Include="Areas\NVClient\Views\AccountsNV\Change_password_NV.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -275,28 +314,7 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\ChucVus\Create.cshtml" />
-    <Content Include="Views\ChucVus\Delete.cshtml" />
-    <Content Include="Views\ChucVus\Details.cshtml" />
-    <Content Include="Views\ChucVus\Edit.cshtml" />
-    <Content Include="Views\ChucVus\Index.cshtml" />
-    <Content Include="Views\PhongBans\Create.cshtml" />
-    <Content Include="Views\PhongBans\Delete.cshtml" />
-    <Content Include="Views\PhongBans\Details.cshtml" />
-    <Content Include="Views\PhongBans\Edit.cshtml" />
-    <Content Include="Views\PhongBans\Index.cshtml" />
-    <Content Include="Views\Roles\Create.cshtml" />
-    <Content Include="Views\Roles\Delete.cshtml" />
-    <Content Include="Views\Roles\Details.cshtml" />
-    <Content Include="Views\Roles\Edit.cshtml" />
-    <Content Include="Views\Roles\Index.cshtml" />
     <Content Include="Views\Accounts\Login.cshtml" />
-    <Content Include="Views\Accounts\Register.cshtml" />
-    <Content Include="Views\NVQuanLies\Create.cshtml" />
-    <Content Include="Views\NVQuanLies\Delete.cshtml" />
-    <Content Include="Views\NVQuanLies\Details.cshtml" />
-    <Content Include="Views\NVQuanLies\Edit.cshtml" />
-    <Content Include="Views\NVQuanLies\Index.cshtml" />
     <Content Include="Views\TuyenDung\Index.cshtml" />
     <Content Include="Views\DangKyTuyenDungs\Create.cshtml" />
     <Content Include="Views\DangKyTuyenDungs\Delete.cshtml" />
@@ -304,6 +322,11 @@
     <Content Include="Views\DangKyTuyenDungs\Edit.cshtml" />
     <Content Include="Views\DangKyTuyenDungs\Index.cshtml" />
     <Content Include="Views\ThanhCong\Index.cshtml" />
+    <Content Include="Views\Luong\Index.cshtml" />
+    <Content Include="Views\NhanViens\Index.cshtml" />
+    <Content Include="Views\NhanViens\Details.cshtml" />
+    <Content Include="Views\Shared\_LoginPatial.cshtml" />
+    <Content Include="Views\Accounts\Change_password.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -17,7 +17,7 @@ namespace QuanLyNhanSu.Areas.NVClient
             context.MapRoute(
                 "NVClient_default",
                 "NVClient/{controller}/{action}/{id}",
-                new { action = "Index", controller="NVclients" ,id = UrlParameter.Optional }
+                new { action = "Index", id = UrlParameter.Optional }
             );
         }
     }

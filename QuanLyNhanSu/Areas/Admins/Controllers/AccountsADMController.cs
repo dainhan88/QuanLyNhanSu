@@ -1,16 +1,17 @@
-﻿using System;
+﻿using QuanLyNhanSu.Models;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
-using QuanLyNhanSu.Models;
 
-namespace QuanLyNhanSu.Controllers
+namespace QuanLyNhanSu.Areas.Admins.Controllers
 {
-    public class AccountsController : Controller
+    public class AccountsADMController : Controller
     {
+        // GET: Admins/AccountsADM
         QuanLyNhanSuDbContext db = new QuanLyNhanSuDbContext();
         Encrytion enc = new Encrytion();
         StringProcess strPro = new StringProcess();
@@ -28,8 +29,7 @@ namespace QuanLyNhanSu.Controllers
             else if (CheckSession() == 2)
 
             {
-                return RedirectToAction("Index", "HomeNV", new { Area = "NVClient" });
-
+                return RedirectToAction("Index", "Home", new { Area = "" });
 
             }
             ViewBag.ReturnUrl = returnUrl;
@@ -89,11 +89,11 @@ namespace QuanLyNhanSu.Controllers
                 acc.PassWord = enc.PasswordEncrytion(acc.PassWord);
                 db.Accounts.Add(acc);
                 db.SaveChanges();
-                return RedirectToAction("Login", "Accounts");
+                return RedirectToAction("Login", "AccountsADM");
             }
             return View(acc);
         }
-        
+
 
         public ActionResult Logout()
         {
@@ -111,7 +111,7 @@ namespace QuanLyNhanSu.Controllers
                 }
                 else if (CheckSession() == 2)
                 {
-                    return RedirectToAction("Index", "HomeNV", new { Area = "NVClient" });
+                    return RedirectToAction("Index", "Home", new { Area = "" });
                 }
             }
             if (Url.IsLocalUrl(returnUrl))
@@ -164,10 +164,10 @@ namespace QuanLyNhanSu.Controllers
             {
                 try
                 {
-                    acc.PassWord = enc.PasswordEncrytion(form["PassWord"]);                   
+                    acc.PassWord = enc.PasswordEncrytion(form["PassWord"]);
                     db.Entry(acc).State = EntityState.Modified;
                     db.SaveChanges();
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "HomeAdmin", new { Area = "Admins" });
                 }
                 catch
                 {
@@ -196,7 +196,7 @@ namespace QuanLyNhanSu.Controllers
                     acc.PassWord = enc.PasswordEncrytion(form["PassWord"]);
                     db.Entry(acc).State = EntityState.Modified;
                     db.SaveChanges();
-                    return RedirectToAction("Index", "Home", new { Area = "Admins" });
+                    return RedirectToAction("Index", "HomeAdmin", new { Area = "Admins" });
                 }
                 catch
                 {

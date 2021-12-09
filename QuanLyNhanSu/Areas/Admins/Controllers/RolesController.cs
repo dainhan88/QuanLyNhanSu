@@ -8,109 +8,109 @@ using System.Web;
 using System.Web.Mvc;
 using QuanLyNhanSu.Models;
 
-namespace QuanLyNhanSu.Controllers
+namespace QuanLyNhanSu.Areas.Admins.Controllers
 {
-    public class PhongBansController : Controller
+    public class RolesController : Controller
     {
         private QuanLyNhanSuDbContext db = new QuanLyNhanSuDbContext();
 
-        // GET: PhongBans
+        // GET: Roles
         public ActionResult Index()
         {
-            return View(db.PhongBans.ToList());
+            return View(db.Roles.ToList());
         }
 
-        // GET: PhongBans/Details/5
+        // GET: Roles/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PhongBan phongBan = db.PhongBans.Find(id);
-            if (phongBan == null)
+            Role role = db.Roles.Find(id);
+            if (role == null)
             {
                 return HttpNotFound();
             }
-            return View(phongBan);
+            return View(role);
         }
 
-        // GET: PhongBans/Create
+        // GET: Roles/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: PhongBans/Create
+        // POST: Roles/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaPhongBan,TenPhongBan,DiaChiPhongBan,SdtPhongBan")] PhongBan phongBan)
+        public ActionResult Create([Bind(Include = "RoleID,RoleName")] Role role)
         {
             if (ModelState.IsValid)
             {
-                db.PhongBans.Add(phongBan);
+                db.Roles.Add(role);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(phongBan);
+            return View(role);
         }
 
-        // GET: PhongBans/Edit/5
+        // GET: Roles/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PhongBan phongBan = db.PhongBans.Find(id);
-            if (phongBan == null)
+            Role role = db.Roles.Find(id);
+            if (role == null)
             {
                 return HttpNotFound();
             }
-            return View(phongBan);
+            return View(role);
         }
 
-        // POST: PhongBans/Edit/5
+        // POST: Roles/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaPhongBan,TenPhongBan,DiaChiPhongBan,SdtPhongBan")] PhongBan phongBan)
+        public ActionResult Edit([Bind(Include = "RoleID,RoleName")] Role role)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(phongBan).State = EntityState.Modified;
+                db.Entry(role).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(phongBan);
+            return View(role);
         }
 
-        // GET: PhongBans/Delete/5
+        // GET: Roles/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PhongBan phongBan = db.PhongBans.Find(id);
-            if (phongBan == null)
+            Role role = db.Roles.Find(id);
+            if (role == null)
             {
                 return HttpNotFound();
             }
-            return View(phongBan);
+            return View(role);
         }
 
-        // POST: PhongBans/Delete/5
+        // POST: Roles/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            PhongBan phongBan = db.PhongBans.Find(id);
-            db.PhongBans.Remove(phongBan);
+            Role role = db.Roles.Find(id);
+            db.Roles.Remove(role);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

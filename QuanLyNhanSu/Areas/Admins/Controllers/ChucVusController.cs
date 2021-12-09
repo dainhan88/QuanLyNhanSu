@@ -1,116 +1,122 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.Entity;
+using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using QuanLyNhanSu.Models;
 
-namespace QuanLyNhanSu.Controllers
+namespace QuanLyNhanSu.Areas.Admins.Controllers
 {
-    public class RolesController : Controller
+    public class ChucVusController : Controller
     {
         private QuanLyNhanSuDbContext db = new QuanLyNhanSuDbContext();
+        AutoGenerateKey aukey = new AutoGenerateKey();
 
-        // GET: Roles
+
+        // GET: ChucVus
         public ActionResult Index()
         {
-            return View(db.Roles.ToList());
+            return View(db.ChucVus.ToList());
         }
 
-        // GET: Roles/Details/5
+        // GET: ChucVus/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Role role = db.Roles.Find(id);
-            if (role == null)
+            ChucVu chucVu = db.ChucVus.Find(id);
+            if (chucVu == null)
             {
                 return HttpNotFound();
             }
-            return View(role);
+            return View(chucVu);
         }
 
-        // GET: Roles/Create
+        // GET: ChucVus/Create
         public ActionResult Create()
         {
+            
             return View();
         }
 
-        // POST: Roles/Create
+        // POST: ChucVus/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "RoleID,RoleName")] Role role)
+        public ActionResult Create([Bind(Include = "MaChucVu,TenChucVu")] ChucVu chucVu)
         {
             if (ModelState.IsValid)
             {
-                db.Roles.Add(role);
+                db.ChucVus.Add(chucVu);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(role);
+            return View(chucVu);
         }
-
-        // GET: Roles/Edit/5
+     
+        // GET: ChucVus/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Role role = db.Roles.Find(id);
-            if (role == null)
+            ChucVu chucVu = db.ChucVus.Find(id);
+            if (chucVu == null)
             {
                 return HttpNotFound();
             }
-            return View(role);
+            return View(chucVu);
         }
 
-        // POST: Roles/Edit/5
+        // POST: ChucVus/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "RoleID,RoleName")] Role role)
+        public ActionResult Edit([Bind(Include = "MaChucVu,TenChucVu")] ChucVu chucVu)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(role).State = EntityState.Modified;
+                db.Entry(chucVu).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(role);
+            return View(chucVu);
         }
 
-        // GET: Roles/Delete/5
+        // GET: ChucVus/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Role role = db.Roles.Find(id);
-            if (role == null)
+            ChucVu chucVu = db.ChucVus.Find(id);
+            if (chucVu == null)
             {
                 return HttpNotFound();
             }
-            return View(role);
+            return View(chucVu);
         }
 
-        // POST: Roles/Delete/5
+        // POST: ChucVus/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            Role role = db.Roles.Find(id);
-            db.Roles.Remove(role);
+            ChucVu chucVu = db.ChucVus.Find(id);
+            db.ChucVus.Remove(chucVu);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

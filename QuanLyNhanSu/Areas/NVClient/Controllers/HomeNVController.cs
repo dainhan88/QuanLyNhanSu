@@ -9,6 +9,7 @@ namespace QuanLyNhanSu.Areas.NVClient.Controllers
     [Authorize(Roles = "client")]
     public class HomeNVController : Controller
     {
+     
         // GET: NVClient/HomeNV
         public ActionResult Index()
         {

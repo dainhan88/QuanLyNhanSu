@@ -7,6 +7,11 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <link href="~/Content/CustomCss.css" rel="stylesheet" />
+    <style>
+        .nav > li > a.nav-link:hover {
+            background-color:transparent;
+        }
+    </style>
 </head>
 <body>
     <div class="tieu-de">
@@ -23,16 +28,13 @@
                 <ul class="nav navbar-nav">
                     <li>
                         <a href="/Home/Index" class="nav-link">Trang Chủ</a>
-                    </li>
+                    </li>                   
                     <li>
                         <a href="/TuyenDung/Index" class="nav-link">Thông tin tuyển dụng</a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav">
-                    <li>
-                        <a href="/Accounts/Login" class="nav-link">Đăng Nhập</a>
-                    </li>
-
+                    @Html.Partial("_LoginPatial")
                 </ul>
             </div>
         </div>
