@@ -1,0 +1,53 @@
+﻿@model IEnumerable<QuanLyNhanSu.Models.PhongBan>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/NVClient/Views/Shared/_LayoutNVClient.cshtml";
+}
+
+<h2>Danh Sách Phòng Ban</h2>
+
+
+<table class="table">
+    <tr class="label-PB">
+        <th>
+            @Html.DisplayNameFor(model => model.TenPhongBan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DiaChiPhongBan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SdtPhongBan)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenPhongBan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiaChiPhongBan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SdtPhongBan)
+            </td>
+
+        </tr>
+    }
+
+</table>
+
+<style>
+    .label-PB {
+        background-color: rgb(50 112 181);
+        color: white;
+        font-weight: 600;
+    }
+
+    table, th, td {
+        border: 1px solid black;
+        text-align: center;
+    }
+</style>

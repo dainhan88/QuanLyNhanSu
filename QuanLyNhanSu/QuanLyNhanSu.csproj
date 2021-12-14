@@ -157,6 +157,7 @@
     <Compile Include="Areas\NVClient\Controllers\HomeNVController.cs" />
     <Compile Include="Areas\NVClient\Controllers\LuongsNVController.cs" />
     <Compile Include="Areas\NVClient\Controllers\NhanViensClientController.cs" />
+    <Compile Include="Areas\NVClient\Controllers\PhongBansNVController.cs" />
     <Compile Include="Areas\NVClient\NVClientAreaRegistration.cs" />
     <Compile Include="Controllers\AccountsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -291,6 +292,7 @@
     <Content Include="Areas\NVClient\Views\NhanViensClient\Index.cshtml" />
     <Content Include="Areas\NVClient\Views\Shared\_LoginPatialNV.cshtml" />
     <Content Include="Areas\NVClient\Views\AccountsNV\Change_password_NV.cshtml" />
+    <Content Include="Areas\NVClient\Views\PhongBansNV\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

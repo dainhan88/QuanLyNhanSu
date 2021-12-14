@@ -148,35 +148,7 @@ namespace QuanLyNhanSu.Areas.Admins.Controllers
             return 0;
         }
 
-        public ActionResult Change_password(string id)
-        {
-            Account acc = db.Accounts.Find(id);
-            return View(acc);
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Change_password(Account acc, FormCollection form)
-        {
-
-
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    acc.PassWord = enc.PasswordEncrytion(form["PassWord"]);
-                    db.Entry(acc).State = EntityState.Modified;
-                    db.SaveChanges();
-                    return RedirectToAction("Index", "HomeAdmin", new { Area = "Admins" });
-                }
-                catch
-                {
-                    ModelState.AddModelError("", "Xác nhận mật khẩu không chính xác!!");
-                }
-            }
-            ModelState.AddModelError("", "Xác nhận mật khẩu không chính xác!!");
-            return View(acc);
-        }
+       
         public ActionResult Change_password_ADM(string id)
         {
             Account acc = db.Accounts.Find(id);
@@ -186,8 +158,6 @@ namespace QuanLyNhanSu.Areas.Admins.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Change_password_ADM(Account acc, FormCollection form)
         {
-
-
 
             if (ModelState.IsValid)
             {
